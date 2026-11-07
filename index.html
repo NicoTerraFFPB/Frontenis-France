@@ -109,6 +109,18 @@ td.nq{border-left:4px solid transparent}
 .sc input{width:56px;text-align:center;padding:6px 4px}
 .sc .dash{color:var(--muted)}
 .sc .num{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.pl-day{margin-top:26px}
+.pl-day:first-of-type{margin-top:0}
+.pl-day h3{border-top:3px solid var(--blue);padding-top:10px;margin-bottom:6px}
+.pl-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:10px 4px}
+.pl-h{font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--navy);font-variant-numeric:tabular-nums}
+.pl-m b{display:block;font-weight:600;overflow-wrap:anywhere}
+.pl-m small{display:block;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:2px}
+.pl-t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right}
+.pl-sc{font-weight:600;font-variant-numeric:tabular-nums;color:var(--navy)}
+.pl-ed{display:grid;grid-template-columns:minmax(0,1fr) 125px 135px;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 4px}
+.pl-ed .pl-m{font-size:14px}
+@media(max-width:640px){.pl-ed{grid-template-columns:1fr 1fr}.pl-ed .pl-m{grid-column:1/-1}.pl-row{grid-template-columns:64px minmax(0,1fr)}.pl-t{grid-column:2;text-align:left}}
 .sub{margin-top:30px}
 .sub:first-of-type{margin-top:0}
 .sub h3.tt{border-top:3px solid var(--blue);padding-top:10px;margin-bottom:14px}
@@ -271,6 +283,7 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
 <nav class="tabs" aria-label="Sections"><div class="wrap" role="tablist">
   <button role="tab" data-tab="inscriptions" aria-selected="true">Inscriptions</button>
   <button role="tab" data-tab="poules" aria-selected="false">Poules</button>
+  <button role="tab" data-tab="planning" aria-selected="false">Planning</button>
   <button role="tab" data-tab="finale" aria-selected="false">Phase finale</button>
   <button role="tab" data-tab="classement" aria-selected="false">Classement général</button>
   <button role="tab" data-tab="organisation" aria-selected="false" id="tabOrg" hidden>Organisation</button>
@@ -305,6 +318,7 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
   </section>
 
   <section class="panel" id="p-poules" hidden></section>
+  <section class="panel" id="p-planning" hidden></section>
   <section class="panel" id="p-finale" hidden></section>
   <section class="panel" id="p-classement" hidden></section>
   <section class="panel" id="p-organisation" hidden></section>
@@ -504,7 +518,7 @@ const CAL=[
   {stage:3,date:"6 et 7 mars 2027",place:"Mont"},
   {stage:4,date:"10 et 11 juillet 2027",place:"Biarritz Fal"}
 ];
-const DEFAULTS={name:"",stage:1,date:"",place:"",poolSize:3,qual:2,maxTeams:12,regOpen:true,tie:"after",pools:null,teams:null,m:{}};
+const DEFAULTS={name:"",stage:1,date:"",place:"",poolSize:3,qual:2,maxTeams:12,regOpen:true,tie:"after",pools:null,teams:null,m:{},plan:null};
 
 let db=null,myId=null,isAdmin=false,demo=false,readonly=false,snap=null;
 try{const se=document.getElementById("snap");if(se&&se.textContent.trim())snap=JSON.parse(se.textContent)}catch(e){}
@@ -626,7 +640,7 @@ function loadDemo(){
 function loadSnap(){
   readonly=true;
   players=snap.players||[];entries=snap.entries||[];
-  tournaments=(snap.tournaments||[]).map(x=>({...DEFAULTS,...x,m:x.m?{...x.m}:{}}));
+  tournaments=(snap.tournaments||[]).map(x=>({...DEFAULTS,...x,m:x.m?{...x.m}:{},plan:x.plan?{...x.plan}:null}));
   loaded={players:true,entries:true,tournaments:true};selId=null;
 }
 /* ---------- rendu ---------- */
@@ -645,12 +659,12 @@ function render(){
   else if(!db){notice.hidden=false;notice.textContent="Les données ne sont pas accessibles pour le moment."}
   else notice.hidden=true;
   $("#noticeWrap").hidden=notice.hidden;
-  renderRank(t,pb);renderForm(t,pb);renderPools(t,pb);renderKO(t,pb);renderGeneral(pb);renderOrg(t,pb);
+  renderRank(t,pb);renderForm(t,pb);renderPools(t,pb);renderPlanning(t,pb);renderKO(t,pb);renderGeneral(pb);renderOrg(t,pb);
   renderHome(pb);renderOpen(pb);
   $("#tabOrg").hidden=!isAdmin;
 }
 /* ---------- navigation entre les pages ---------- */
-const TABS=["inscriptions","poules","finale","classement","organisation"];
+const TABS=["inscriptions","poules","planning","finale","classement","organisation"];
 function parseHash(){
   const h=(location.hash||"").replace(/^#/,"");
   let m;
@@ -658,7 +672,7 @@ function parseHash(){
   if(h==="open")return {v:"open"};
   if(h==="nat-a")return {v:"nat",k:"a"};
   if(h==="nat-b")return {v:"nat",k:"b"};
-  m=h.match(/^open-(\d+)(?:-(inscriptions|poules|finale|classement|organisation))?$/);
+  m=h.match(/^open-(\d+)(?:-(inscriptions|poules|planning|finale|classement|organisation))?$/);
   if(m)return {v:"stage",stage:Number(m[1]),tab:m[2]||"inscriptions"};
   if(TABS.includes(h))return {v:"stage",stage:null,tab:h};
   return {v:"home"};
@@ -836,13 +850,14 @@ function updateWho(){
 }
 const surname=(pb,id)=>{const p=pb[id];return p?(p.last||p.first||p.name):"Joueur retiré"};
 const initialName=(pb,id)=>{const p=pb[id];return p&&p.last&&p.first?p.first.charAt(0)+". "+p.last:surname(pb,id)};
-function teamName(t,pb,id){
+function teamName(t,pb,id,sep){
+  sep=sep||" / ";
   const tm=t.teams&&t.teams[id];if(!tm)return "Équipe retirée";
   const others=Object.keys(t.teams).filter(o=>o!==id).map(o=>t.teams[o]);
-  const lab=(x,f)=>f(pb,x.p1)+" / "+f(pb,x.p2);
+  const lab=(x,f)=>f(pb,x.p1)+sep+f(pb,x.p2);
   if(!others.some(o=>lab(o,surname)===lab(tm,surname)))return lab(tm,surname);
   if(!others.some(o=>lab(o,initialName)===lab(tm,initialName)))return lab(tm,initialName);
-  return pname(pb,tm.p1)+" / "+pname(pb,tm.p2);
+  return pname(pb,tm.p1)+sep+pname(pb,tm.p2);
 }
 function renderPools(t,pb){
   const el=$("#p-poules");
@@ -857,6 +872,56 @@ function renderPools(t,pb){
     return '<article class="pool"><header><h3>Poule '+String.fromCharCode(65+pi)+'</h3><span>'+p.ids.length+' équipes</span></header><div class="scroll"><table class="left"><thead><tr><th>#</th><th>Équipe</th><th>J</th><th>V</th><th>Goal avg</th></tr></thead><tbody>'+rows+'</tbody></table></div><div class="matches"><h4>Matchs</h4>'+ms+'</div></article>';
   }).join("")+'</div>';
   h+='<p class="note" style="margin-top:12px">Une partie se joue en 1 manche de 20 points. Classement : nombre de victoires, puis goal average (différence de points). Barre jaune : qualifiés pour le tableau principal. Barre grise : tableau consolant.'+(done?"":" Poules en cours.")+'</p>';
+  el.innerHTML=h;
+}
+
+const DAYS=["Samedi","Dimanche"];
+function planMatches(t){
+  const out=[];
+  (t.pools||[]).forEach((p,pi)=>poolMatches(pi,p.ids).forEach(m=>out.push({key:m.key,a:m.a,b:m.b,label:"Poule "+String.fromCharCode(65+pi)})));
+  const brs=buildBrackets(t);
+  if(brs)[[brs.main,"Tableau principal"],[brs.cons,"Tableau consolant"]].forEach(([br,title])=>{
+    if(!br)return;
+    br.rounds.forEach((ms,r)=>ms.forEach(m=>{if(!m.bye)out.push({key:m.key,a:m.a,b:m.b,label:title+" · "+br.labels[r]})}));
+    if(br.petite)out.push({key:br.petite.key,a:br.petite.a,b:br.petite.b,label:title+" · Petite finale"});
+  });
+  return out;
+}
+function renderPlanning(t,pb){
+  const el=$("#p-planning");
+  if(!t||!t.pools||!t.pools.length){
+    el.innerHTML='<h2>Planning</h2><div class="empty"><b>Planning pas encore disponible</b>Il sera publié après le tirage des poules.</div>';return;
+  }
+  const plan=t.plan||{},edit=isAdmin&&!demo&&!readonly;
+  const isSet=m=>!!(plan[m.key]&&plan[m.key].j&&plan[m.key].h);
+  const dayIx=m=>DAYS.indexOf(plan[m.key].j);
+  const all=planMatches(t);
+  const ms=[...all.filter(isSet).sort((a,b)=>(dayIx(a)-dayIx(b))||plan[a.key].h.localeCompare(plan[b.key].h)),...all.filter(m=>!isSet(m))];
+  const nm=id=>id?teamName(t,pb,id,"-"):"À déterminer";
+  const sc=m=>{const r=(t.m||{})[m.key];return validRes(r)?'<span class="pl-sc">'+esc(r.a)+' - '+esc(r.b)+'</span>':""};
+  let h='<h2>Planning</h2>';
+  if(edit){
+    h+='<div class="card" style="margin-bottom:22px"><h3 style="margin-bottom:6px">Saisir les horaires</h3><p class="note" style="margin:0 0 10px">Choisissez le jour et l\'heure de chaque partie : elles se rangent automatiquement dans l\'ordre chronologique. Les parties du tableau final apparaissent dès que les équipes sont connues. Laissez vide pour « horaire à venir ».</p>'+
+    ms.map(m=>{const e=plan[m.key]||{};
+      return '<div class="pl-ed"><div class="pl-m"><b>'+esc(nm(m.a)+" / "+nm(m.b))+'</b><small>'+esc(m.label)+'</small></div>'+
+      '<select data-plan="'+esc(m.key)+'" data-pf="j" aria-label="Jour"><option value=""></option>'+DAYS.map(d=>'<option'+(e.j===d?" selected":"")+'>'+d+'</option>').join("")+'</select>'+
+      '<input data-live data-plan="'+esc(m.key)+'" data-pf="h" type="time" value="'+esc(e.h||"")+'" aria-label="Heure">'+
+      '</div>';
+    }).join("")+'</div>';
+  }
+  const sched=ms.filter(m=>plan[m.key]&&plan[m.key].j&&plan[m.key].h);
+  const rest=ms.filter(m=>!(plan[m.key]&&plan[m.key].j&&plan[m.key].h)&&m.a&&m.b);
+  const row=m=>{const e=plan[m.key]||{};
+    return '<div class="pl-row"><div class="pl-h">'+esc(e.h||"—")+'</div><div class="pl-m"><b>'+esc(nm(m.a)+" / "+nm(m.b))+'</b><small>'+esc(m.label)+'</small></div><div class="pl-t">'+sc(m)+'</div></div>'};
+  if(!sched.length){
+    h+='<div class="empty"><b>Horaires à venir</b>Les horaires des parties seront publiés ici par l\'organisateur.</div>';
+  }else{
+    DAYS.forEach(d=>{
+      const day=sched.filter(m=>plan[m.key].j===d).sort((a,b)=>plan[a.key].h.localeCompare(plan[b.key].h));
+      if(day.length)h+='<div class="pl-day"><h3>'+d+(t.date?"":"")+'</h3>'+day.map(row).join("")+'</div>';
+    });
+    if(rest.length)h+='<div class="pl-day"><h3>Horaire à venir</h3>'+rest.map(row).join("")+'</div>';
+  }
   el.innerHTML=h;
 }
 function scoreCell(key,res,edit){
@@ -1054,6 +1119,15 @@ document.addEventListener("change",e=>{
     if(v.a===""&&v.b==="")delete t.m[key];else t.m[key]={a:clamp(v.a),b:clamp(v.b)};
     saveT(t);render();return;
   }
+  if(x.dataset.plan&&t){
+    const k=x.dataset.plan,f=x.dataset.pf;
+    t.plan=t.plan?{...t.plan}:{};
+    const e={...(t.plan[k]||{})};
+    const v=x.value.trim();
+    if(v)e[f]=v;else delete e[f];
+    if(Object.keys(e).length)t.plan[k]=e;else delete t.plan[k];
+    saveT(t);render();return;
+  }
   if(x.dataset.pid&&x.dataset.f){
     const val=x.value.trim();
     if(!val){toast("Le nom ne peut pas être vide.");render();return}
@@ -1197,7 +1271,7 @@ async function start(){
   db.collection("players").onSnapshot(s=>{players=s.docs.map(d=>{const x=d.data();const first=x.first||"";return {id:d.id,first,last:x.last||(first?"":x.name||""),name:((first+" "+(x.last||"")).trim())||x.name||""}});done("players");render();showTab()},fail("players"));
   db.collection("entries").onSnapshot(s=>{entries=s.docs.map(d=>({id:d.id,...d.data()}));done("entries");render()},fail("entries"));
   if(isAdmin)db.collection("birth").onSnapshot(s=>{births={};s.docs.forEach(d=>{births[d.id]=d.data().d});render()},()=>{});
-  db.collection("tournaments").onSnapshot(s=>{tournaments=s.docs.map(d=>{const x=d.data();return {...DEFAULTS,...x,id:d.id,m:x.m?{...x.m}:{}}});done("tournaments");render();showTab()},fail("tournaments"));
+  db.collection("tournaments").onSnapshot(s=>{tournaments=s.docs.map(d=>{const x=d.data();return {...DEFAULTS,...x,id:d.id,m:x.m?{...x.m}:{},plan:x.plan?{...x.plan}:null}});done("tournaments");render();showTab()},fail("tournaments"));
 }
 start();
 })();
