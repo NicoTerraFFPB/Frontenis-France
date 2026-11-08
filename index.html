@@ -121,6 +121,141 @@ td.nq{border-left:4px solid transparent}
 .pl-ed{display:grid;grid-template-columns:minmax(0,1fr) 125px 135px;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 4px}
 .pl-ed .pl-m{font-size:14px}
 @media(max-width:640px){.pl-ed{grid-template-columns:1fr 1fr}.pl-ed .pl-m{grid-column:1/-1}.pl-row{grid-template-columns:64px minmax(0,1fr)}.pl-t{grid-column:2;text-align:left}}
+.nr{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.nr .l{text-align:right;overflow-wrap:anywhere}.nr .r{overflow-wrap:anywhere}.nr .w{font-weight:700}
+.nr-c{text-align:center;min-width:92px}
+.nr-big{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.nr-det{display:block;font-size:12px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.nr-st{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nr-st.run{color:var(--blue);font-weight:600}
+.nr-ed{display:grid;gap:8px;padding:12px 4px;border-bottom:1px solid var(--line)}
+.nr-ed .nr-t{font-weight:600;overflow-wrap:anywhere}
+.nr-in{display:flex;flex-wrap:wrap;gap:10px}
+.nr-set{display:grid;gap:3px;grid-template-columns:62px auto 62px;align-items:center}
+.nr-set small{grid-column:1/-1;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nr-set input{text-align:center;padding:7px 4px}
+.nr-set i{font-style:normal;color:var(--muted)}
+.nd{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--red);margin-bottom:18px}
+.nd>header{padding:12px 14px 6px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between}
+.nd>header small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.nd-b{padding:4px 14px 14px;display:grid;gap:8px}
+.nd-bt{display:flex;gap:6px;justify-content:flex-end}
+.jmeta{margin:-6px 0 18px;font-size:18px;color:var(--ink)}
+.jgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start}
+@media(max-width:900px){.jgrid{grid-template-columns:minmax(0,1fr)}}
+.enc{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--blue);min-width:0}
+.enc.res{border-top-color:var(--green)}
+.enc>header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;padding:14px 16px 8px}
+.enc>header span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.enc-b{padding:4px 16px 16px;display:grid;gap:12px}
+.pr{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.pt{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.pt.none{color:var(--muted)}
+.pn{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pm b{font-weight:600;overflow-wrap:anywhere}
+.pe{display:grid;grid-template-columns:104px minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+@media(max-width:640px){.pe{grid-template-columns:1fr 1fr}.pe>input[type=time]{grid-column:1/-1}}
+.mc{background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--line);min-width:0}
+.mc.cours{border-left-color:var(--blue)}.mc.fin{border-left-color:var(--green)}.mc.forfait{border-left-color:var(--red)}
+.mc>header{display:flex;align-items:center;gap:12px;padding:10px 12px 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mc-h{font-family:var(--f-display);font-size:20px;letter-spacing:.04em;color:var(--navy)}
+.mc-st{margin-left:auto;font-weight:600}
+.mcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:16px;align-items:start}
+.mc.wh{background:#F2EFE8;color:#12233F;border-top-color:#D9DEE6;border-right-color:#D9DEE6;border-bottom-color:#D9DEE6}
+.mc.nv{background:#12233F;color:#fff;border-top-color:#2C4268;border-right-color:#2C4268;border-bottom-color:#2C4268}
+.mc.wh>header{color:#5B677A}.mc.nv>header{color:rgba(255,255,255,.75)}
+.mc.wh .mc-h,.mc.wh .mc-vs,.mc.wh .sb th.sn,.mc.wh .sb td.ws,.mc.wh .sb .tot{color:#12233F}
+.mc.nv .mc-h,.mc.nv .mc-vs,.mc.nv .sb th.sn,.mc.nv .sb td.ws,.mc.nv .sb .tot{color:#fff}
+.mc.wh .mc-h.none{color:#5B677A}.mc.nv .mc-h.none{color:rgba(255,255,255,.55)}
+.mc.wh .sb td{color:#12233F}.mc.nv .sb td{color:rgba(255,255,255,.88)}
+.mc.wh .sb thead th{color:#5B677A;border-bottom-color:#D9DEE6}.mc.nv .sb thead th{color:rgba(255,255,255,.72);border-bottom-color:rgba(255,255,255,.28)}
+.mc.wh .sb tbody tr+tr th,.mc.wh .sb tbody tr+tr td{border-top-color:#D9DEE6}.mc.nv .sb tbody tr+tr th,.mc.nv .sb tbody tr+tr td{border-top-color:rgba(255,255,255,.2)}
+.mc.wh .sb .dim{color:#5B677A}.mc.nv .sb .dim{color:rgba(255,255,255,.55)}
+.mc.wh .sb tr.win th.sn{color:#1E7A46}.mc.nv .sb tr.win th.sn{color:#9BE5B6}
+.mc.wh .sb tr.win .tot{background:#1E7A46;color:#fff}.mc.nv .sb tr.win .tot{background:#9BE5B6;color:#12233F}
+.mc.wh.cours .mc-st{color:#2358B8}.mc.wh.fin .mc-st{color:#1E7A46}.mc.wh.forfait .mc-st{color:#C8102E}
+.mc.nv.cours .mc-st{color:#A9CCFF}.mc.nv.fin .mc-st{color:#9BE5B6}.mc.nv.forfait .mc-st{color:#FFA9B4}
+.mc.wh input,.mc.wh select,.mc.wh .fbtn{background:#12233F;color:#fff;border-color:#12233F}
+.mc.nv input,.mc.nv select,.mc.nv .fbtn{background:#F2EFE8;color:#12233F;border-color:#F2EFE8}
+.mc.wh input::placeholder{color:rgba(255,255,255,.5)}.mc.nv input::placeholder{color:rgba(18,35,63,.45)}
+.mc.wh input,.mc.wh select{color-scheme:dark}.mc.nv input,.mc.nv select{color-scheme:light}
+.mc.wh .fbtn.on,.mc.nv .fbtn.on{background:#C8102E;border-color:#C8102E;color:#fff}
+.mc.wh .btn:not(.warn){background:#12233F;color:#fff}.mc.nv .btn:not(.warn){background:#F2EFE8;color:#12233F}
+.mc.wh .btn.warn{background:#F2EFE8;color:#C8102E;border:1px solid #C8102E}.mc.nv .btn.warn{background:#F2EFE8;color:#C8102E;border-color:#F2EFE8}
+.mc-vs{margin:0;padding:6px 14px 16px;font-size:17px;overflow-wrap:anywhere}
+.mc-vs b{font-weight:600}
+.mc-h.none{color:var(--muted)}
+.mc-ti{width:112px;padding:5px 6px;font-size:16px}
+.mc-f{display:flex;justify-content:flex-end}
+.nm{display:flex;gap:4px;align-items:center}
+.nm select{min-width:0;flex:1}
+.fbtn{flex:none;width:28px;height:31px;padding:0;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:700 13px inherit;cursor:pointer}
+.fbtn.on{background:var(--red);border-color:var(--red);color:var(--bg)}
+.sb th.sn select{width:100%;font-size:14px;padding:6px 4px;font-weight:600}
+.jset{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--blue);padding:10px 14px;margin-bottom:16px}
+.jset summary{cursor:pointer;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--navy)}
+.jset[open] summary{margin-bottom:12px}
+.jset .row{margin-top:12px}
+.mc.cours .mc-st{color:var(--blue)}.mc.fin .mc-st{color:var(--green)}.mc.forfait .mc-st{color:var(--red)}
+.sb{width:100%;border-collapse:collapse;table-layout:fixed;margin:4px 0 6px}
+.sb th,.sb td{padding:5px 3px;text-align:center;border-bottom:0;font-size:16px;font-variant-numeric:tabular-nums}
+.sb thead th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1.25;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sb th.sn{text-align:left;padding-left:12px;text-transform:none;letter-spacing:0;font-size:16px;font-weight:600;color:var(--ink);overflow-wrap:anywhere;line-height:1.2}
+.sb tbody tr+tr th,.sb tbody tr+tr td{border-top:1px solid var(--line)}
+.sb td.ws{font-weight:700;color:var(--navy)}
+.sb .tot{font-family:var(--f-display);font-size:26px;font-weight:700;color:var(--navy)}
+.sb tr.win th.sn{color:var(--green)}
+.sb tr.win .tot{background:var(--green);color:var(--bg)}
+.sb thead th.sm{text-align:left;padding-left:12px}
+.sb .smt{display:none}
+@media(max-width:520px){.sb .lg{display:none}.sb .smt{display:inline}}
+.sb .dim{color:var(--muted);font-weight:400}
+.sb input{width:100%;max-width:58px;text-align:center;padding:8px 2px}
+.mc-f{padding:4px 12px 12px}
+.bkt{display:grid;grid-template-columns:1fr;gap:28px}
+.bkc{min-width:0}
+.bk-h{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin:0 0 12px;padding-left:10px;border-left:4px solid var(--red)}
+.bk-l{display:flex;flex-direction:column;gap:14px}
+.bk>header{flex-wrap:wrap;row-gap:6px}
+.bk>header>span:first-child{font-weight:600}
+.bk .mc-st{margin-left:auto}
+.bk-w{display:flex;gap:6px;width:100%}
+.bk-w .mc-ti{width:auto;flex:1;min-width:0}
+.bk-wp{width:100%;font-size:15px;letter-spacing:.04em;text-transform:none}
+.bk-n{display:block;min-width:0}
+.bk-n b{display:block;font-weight:600;overflow-wrap:anywhere}
+.bk-n small{display:block;font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.bk-tbd b{font-weight:400;font-style:italic;opacity:.75}
+.mc.wh .bk-n b,.mc.wh .bk-n small{color:#12233F}.mc.nv .bk-n b,.mc.nv .bk-n small{color:#fff}
+.mc.bk.bk-f.wh,.mc.bk.bk-f.nv{border-top:4px solid var(--red)}
+.bk-champ{margin-top:26px;padding:22px 18px;background:#12233F;color:#fff;border-top:4px solid var(--red);text-align:center}
+.bk-champ span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.bk-champ b{display:block;font-family:var(--f-display);font-size:38px;line-height:1.1;margin:6px 0 2px;text-transform:uppercase;letter-spacing:.02em}
+.bk-champ small{display:block;opacity:.8}
+.bkp{display:flex;flex-direction:column;gap:14px}
+.bk .sb th.sn{font-size:15px}
+.bk .sb thead th{font-size:10px}
+@media(min-width:1000px){
+  .bkt{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+  .bkc{display:flex;flex-direction:column}
+  .bkc .bk-l{flex:1;justify-content:space-around;position:relative}
+  .bk{position:relative}
+  .bkc-q .bk::after,.bkc-d .bk::after{content:"";position:absolute;right:-17px;top:50%;width:17px;border-top:2px solid var(--soft)}
+  .bkc-d .bk::before,.bkc-f .bk::before{content:"";position:absolute;left:-17px;top:50%;width:17px;border-top:2px solid var(--soft)}
+  .bkc-q .bkp{position:relative}
+  .bkc-q .bkp::after{content:"";position:absolute;right:-17px;top:24%;bottom:24%;border-right:2px solid var(--soft)}
+  .bkc-d .bk-l::after{content:"";position:absolute;right:-17px;top:25%;bottom:25%;border-right:2px solid var(--soft)}
+}
+}
+
+.nd-m{padding:8px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.nd-e{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:center}
+.nd-h{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 14px 10px}
+.na-tm{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:11px 4px}
+.na-tm .rk{font-family:var(--f-display);font-weight:700;font-size:24px;color:var(--navy)}
+.na-tm small{display:block;color:var(--muted)}
+.na-ted{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+@media(max-width:640px){.nd-e,.nd-h,.na-ted{grid-template-columns:1fr 1fr}.nd-e>button,.na-ted>button{grid-column:1/-1}.nr{grid-template-columns:1fr}.nr .l,.nr .r{text-align:center}}
 .sub{margin-top:30px}
 .sub:first-of-type{margin-top:0}
 .sub h3.tt{border-top:3px solid var(--blue);padding-top:10px;margin-bottom:14px}
@@ -265,6 +400,25 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
   </main>
 </div>
 
+<div class="view" id="v-nata" hidden>
+  <header class="top"><div class="wrap">
+    <div style="min-width:0">
+      <div class="crumb"><a href="#accueil">Frontenis France</a></div>
+      <div class="eyebrow">Séniors masculins · Saison 2026/2027</div>
+      <h1>Championnat de France National A</h1>
+      <div class="rule"></div>
+      <div class="meta" id="naMeta"></div>
+    </div>
+  </div></header>
+  <nav class="tabs" aria-label="Sections National A"><div class="wrap" role="tablist" id="naTabs"></div></nav>
+  <main class="wrap">
+    <section class="panel" id="na-classement"></section>
+    <section class="panel" id="na-journee" hidden></section>
+    <section class="panel" id="na-finale" hidden></section>
+    <section class="panel" id="na-equipes" hidden></section>
+  </main>
+</div>
+
 <div class="view" id="v-stage" hidden>
 <header class="top"><div class="wrap">
   <div style="min-width:0">
@@ -297,7 +451,8 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
         <p class="note" style="margin:0 0 12px" id="rankNote"></p>
         <div id="rankList"></div>
       </div>
-      <div class="card red">
+      <div>
+        <div hidden aria-hidden="true">
         <h2 id="formTitle">Inscrire mon équipe</h2>
         <form class="form" id="regForm" novalidate>
           <label for="p1">Joueur 1<input id="p1" list="roster" autocomplete="off" placeholder="Prénom Nom"></label>
@@ -312,7 +467,8 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
           <div class="msg" id="regMsg" role="status"></div>
           <p class="note" style="margin:0">Licence FFPB obligatoire. On ne peut pas s'inscrire avec un joueur déjà associé sur une autre étape du Circuit. Les points sont repris automatiquement du classement général.</p>
         </form>
-        <div class="callout" id="regInfo" style="margin-top:14px"><b>Inscription par WhatsApp</b>Envoyez le nom de vos deux joueurs à Nicolas Terranova (06 19 63 15 66), 2 à 3 semaines avant l'étape. Votre équipe apparaît ici dès que l'organisateur l'a enregistrée.</div>
+                </div>
+        <div class="callout" id="regInfo"><b>Inscription par WhatsApp</b>Envoyez le nom de vos deux joueurs à Nicolas Terranova (06 19 63 15 66), 2 à 3 semaines avant l'étape. Votre équipe apparaît ici dès que l'organisateur l'a enregistrée.</div>
       </div>
     </div>
   </section>
@@ -328,7 +484,7 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
 <datalist id="roster"></datalist>
 <div class="toast" id="toast" hidden></div>
 
-<script type="application/json" id="snap">{"at": "2026-11-07", "players": [{"first": "Ion", "last": "AUBE", "id": "j01", "name": "Ion AUBE"}, {"first": "Axel", "last": "BEAU", "id": "j02", "name": "Axel BEAU"}, {"first": "Bastien", "last": "FERREIRA PINTO", "id": "j03", "name": "Bastien FERREIRA PINTO"}, {"first": "Lucas", "last": "BELASCAIN", "id": "j04", "name": "Lucas BELASCAIN"}, {"first": "Remi", "last": "BOURTAYRE", "id": "j05", "name": "Remi BOURTAYRE"}, {"first": "Titouan", "last": "BRANA COZ", "id": "j06", "name": "Titouan BRANA COZ"}, {"first": "Oan", "last": "COUSSAN", "id": "j07", "name": "Oan COUSSAN"}, {"first": "Théo", "last": "COSTA", "id": "j08", "name": "Théo COSTA"}, {"first": "Clément", "last": "DESPAGNE", "id": "j09", "name": "Clément DESPAGNE"}, {"first": "Eneko", "last": "", "id": "j10", "name": "Eneko"}, {"first": "Pablo", "last": "ETCHEVERRIA", "id": "j11", "name": "Pablo ETCHEVERRIA"}, {"first": "Mathias", "last": "FORDIN", "id": "j12", "name": "Mathias FORDIN"}, {"first": "Morgan", "last": "FAYOL", "id": "j13", "name": "Morgan FAYOL"}, {"first": "Lucas", "last": "NONNON DUFFOUR", "id": "j14", "name": "Lucas NONNON DUFFOUR"}, {"first": "Matine", "last": "ITTURIA", "id": "j15", "name": "Matine ITTURIA"}, {"first": "Flavien", "last": "JOLY", "id": "j16", "name": "Flavien JOLY"}, {"first": "Alex", "last": "JANY", "id": "j17", "name": "Alex JANY"}, {"first": "Jokin", "last": "", "id": "j18", "name": "Jokin"}, {"first": "Theo", "last": "LASSALLE", "id": "j19", "name": "Theo LASSALLE"}, {"first": "Alex", "last": "MARQUE", "id": "j20", "name": "Alex MARQUE"}, {"first": "Pako", "last": "MONTOLIEU", "id": "j21", "name": "Pako MONTOLIEU"}, {"first": "Theo", "last": "OURTHIAGE", "id": "j22", "name": "Theo OURTHIAGE"}, {"first": "Elie", "last": "PUCHEUX", "id": "j23", "name": "Elie PUCHEUX"}, {"first": "Kevin", "last": "PUCHEUX", "id": "j24", "name": "Kevin PUCHEUX"}, {"first": "Léo", "last": "PEROL", "id": "j25", "name": "Léo PEROL"}, {"first": "Mael", "last": "PUCHEUX", "id": "j26", "name": "Mael PUCHEUX"}, {"first": "Theo", "last": "PUCHEUX", "id": "j27", "name": "Theo PUCHEUX"}, {"first": "Tom", "last": "PEROL", "id": "j28", "name": "Tom PEROL"}, {"first": "Florian", "last": "SIGNARBIEUX", "id": "j29", "name": "Florian SIGNARBIEUX"}, {"first": "Hugo", "last": "SOURBES", "id": "j30", "name": "Hugo SOURBES"}, {"first": "Robin", "last": "TOURON", "id": "j31", "name": "Robin TOURON"}, {"first": "Aritz", "last": "AZPEITIA", "id": "j32", "name": "Aritz AZPEITIA"}, {"first": "Nicolas", "last": "TERRANOVA", "id": "pmw4yxtgglq0g", "name": "Nicolas TERRANOVA"}, {"first": "Andoni", "last": "CASTERA", "id": "pmw6cie7mnv3w", "name": "Andoni CASTERA"}], "entries": [{"regs": {"etape-1": {"createdAt": 1794052467015, "p1": "j01", "p2": "pmw6cie7mnv3w"}}, "id": "e1"}, {"regs": {"etape-1": {"createdAt": 1794052427482, "p1": "j05", "p2": "j12"}}, "id": "e2"}], "tournaments": [{"createdAt": 1, "date": "21 et 22 novembre 2026", "m": {}, "maxTeams": 12, "name": "OPEN de Brive", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": true, "stage": 1, "teams": null, "tie": "after", "id": "etape-1"}, {"createdAt": 2, "date": "23 et 24 janvier 2027", "m": {}, "maxTeams": 12, "name": "Étape 2", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 2, "teams": null, "id": "etape-2"}, {"createdAt": 3, "date": "6 et 7 mars 2027", "m": {}, "maxTeams": 12, "name": "Étape 3", "place": "Mont", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 3, "teams": null, "id": "etape-3"}, {"createdAt": 4, "date": "10 et 11 juillet 2027", "m": {}, "maxTeams": 12, "name": "Étape 4", "place": "Biarritz Fal", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 4, "teams": null, "id": "etape-4"}]}</script>
+<script type="application/json" id="snap">{"at": "2026-11-08", "players": [{"first": "Ion", "last": "AUBE", "id": "j01", "name": "Ion AUBE"}, {"first": "Axel", "last": "BEAU", "id": "j02", "name": "Axel BEAU"}, {"first": "Bastien", "last": "FERREIRA PINTO", "id": "j03", "name": "Bastien FERREIRA PINTO"}, {"first": "Lucas", "last": "BELASCAIN", "id": "j04", "name": "Lucas BELASCAIN"}, {"first": "Remi", "last": "BOURTAYRE", "id": "j05", "name": "Remi BOURTAYRE"}, {"first": "Titouan", "last": "BRANA COZ", "id": "j06", "name": "Titouan BRANA COZ"}, {"first": "Oan", "last": "COUSSAN", "id": "j07", "name": "Oan COUSSAN"}, {"first": "Théo", "last": "COSTA", "id": "j08", "name": "Théo COSTA"}, {"first": "Clément", "last": "DESPAGNE", "id": "j09", "name": "Clément DESPAGNE"}, {"first": "Eneko", "last": "", "id": "j10", "name": "Eneko"}, {"first": "Pablo", "last": "ETCHEVERRIA", "id": "j11", "name": "Pablo ETCHEVERRIA"}, {"first": "Mathias", "last": "FORDIN", "id": "j12", "name": "Mathias FORDIN"}, {"first": "Morgan", "last": "FAYOL", "id": "j13", "name": "Morgan FAYOL"}, {"first": "Lucas", "last": "NONNON DUFFOUR", "id": "j14", "name": "Lucas NONNON DUFFOUR"}, {"first": "Matine", "last": "ITTURIA", "id": "j15", "name": "Matine ITTURIA"}, {"first": "Flavien", "last": "JOLY", "id": "j16", "name": "Flavien JOLY"}, {"first": "Alex", "last": "JANY", "id": "j17", "name": "Alex JANY"}, {"first": "Jokin", "last": "", "id": "j18", "name": "Jokin"}, {"first": "Theo", "last": "LASSALLE", "id": "j19", "name": "Theo LASSALLE"}, {"first": "Alex", "last": "MARQUE", "id": "j20", "name": "Alex MARQUE"}, {"first": "Pako", "last": "MONTOLIEU", "id": "j21", "name": "Pako MONTOLIEU"}, {"first": "Theo", "last": "OURTHIAGE", "id": "j22", "name": "Theo OURTHIAGE"}, {"first": "Elie", "last": "PUCHEUX", "id": "j23", "name": "Elie PUCHEUX"}, {"first": "Kevin", "last": "PUCHEUX", "id": "j24", "name": "Kevin PUCHEUX"}, {"first": "Léo", "last": "PEROL", "id": "j25", "name": "Léo PEROL"}, {"first": "Mael", "last": "PUCHEUX", "id": "j26", "name": "Mael PUCHEUX"}, {"first": "Theo", "last": "PUCHEUX", "id": "j27", "name": "Theo PUCHEUX"}, {"first": "Tom", "last": "PEROL", "id": "j28", "name": "Tom PEROL"}, {"first": "Florian", "last": "SIGNARBIEUX", "id": "j29", "name": "Florian SIGNARBIEUX"}, {"first": "Hugo", "last": "SOURBES", "id": "j30", "name": "Hugo SOURBES"}, {"first": "Robin", "last": "TOURON", "id": "j31", "name": "Robin TOURON"}, {"first": "Aritz", "last": "AZPEITIA", "id": "j32", "name": "Aritz AZPEITIA"}, {"first": "Nicolas", "last": "TERRANOVA", "id": "pmw4yxtgglq0g", "name": "Nicolas TERRANOVA"}, {"first": "Andoni", "last": "CASTERA", "id": "pmw6cie7mnv3w", "name": "Andoni CASTERA"}], "entries": [{"regs": {"etape-1": {"createdAt": 1794052467015, "p1": "j01", "p2": "pmw6cie7mnv3w"}}, "id": "e1"}, {"regs": {"etape-1": {"createdAt": 1794052427482, "p1": "j05", "p2": "j12"}}, "id": "e2"}], "tournaments": [{"createdAt": 1, "date": "21 et 22 novembre 2026", "m": {}, "maxTeams": 12, "name": "OPEN de Brive", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": true, "stage": 1, "teams": null, "tie": "after", "id": "etape-1"}, {"createdAt": 2, "date": "23 et 24 janvier 2027", "m": {}, "maxTeams": 12, "name": "Étape 2", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 2, "teams": null, "id": "etape-2"}, {"createdAt": 3, "date": "6 et 7 mars 2027", "m": {}, "maxTeams": 12, "name": "Étape 3", "place": "Mont", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 3, "teams": null, "id": "etape-3"}, {"createdAt": 4, "date": "10 et 11 juillet 2027", "m": {}, "maxTeams": 12, "name": "Étape 4", "place": "Biarritz Fal", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 4, "teams": null, "id": "etape-4"}], "nat": {"teams": {}, "days": [], "res": {}, "fin": {}}}</script>
 <script>
 /*LOGIC*/
 const ptsForPlace=p=>p<=1?45:p===2?35:p===3?30:p===4?20:p<=8?16:p===9?11:p===10?9:p===11?7:5;
@@ -507,6 +663,90 @@ function makeDraw(teams,board,hasPrev,poolSize,max,rnd,births,mode,fixed){
   ranked.forEach((tm,i)=>{snap[tm.id]={p1:tm.p1,p2:tm.p2,createdAt:tm.createdAt||0,seed:i+1,avg:teamAvg(tm,board),bt:tm.bt==null?null:tm.bt}});
   return {pools:drawPools(ranked.map(x=>x.id),poolSize),teams:snap};
 }
+
+/* ---------- National A : championnat, phase aller ---------- */
+const NSETMAX=[15,15,10];
+const NAT_DAYS=[["sam. 19 décembre 2026","Brive","",1],["sam. 20 février 2027","Portet-sur-Garonne","",1],["sam. 27 mars 2027","Biarritz - Fal","",1],["sam. 24 avril 2027","Le Haillan","",1],["sam. 19 juin 2027","Lieu à définir","Fin des phases de poule si besoin",0]];
+function natSpread(rounds,k){const out=Array.from({length:k},()=>[]);rounds.forEach((r,i)=>out[Math.min(k-1,Math.floor(i*k/rounds.length))].push(...r));return out}
+function natSets(r){
+  let a=0,b=0,pa=0,pb=0,started=false;
+  for(let i=1;i<=3;i++){
+    const x=r&&r["a"+i],y=r&&r["b"+i];
+    const ok=x!=null&&y!=null&&x!==""&&y!=="";
+    if(ok)started=true;
+    if(a===2||b===2||!ok||num(x)===num(y))continue;
+    pa+=num(x);pb+=num(y);
+    if(num(x)>num(y))a++;else b++;
+  }
+  return {a,b,pa,pb,started,done:a===2||b===2};
+}
+function natStatus(r){
+  if(r&&r.f)return "forfait";
+  const s=natSets(r);
+  return s.done?"fin":(s.started?"cours":"avenir");
+}
+function natWinner(m,r){
+  if(r&&r.f)return r.f==="1"?m.b:m.a;
+  const s=natSets(r);
+  return s.done?(s.a>s.b?m.a:m.b):null;
+}
+function natStandings(nat){
+  const rows={};
+  Object.keys(nat.teams||{}).forEach(id=>rows[id]={id,j:0,pts:0,w:0,l:0,f:0,sw:0,sl:0,pw:0,pl:0});
+  (nat.days||[]).forEach(d=>(d.ms||[]).forEach(m=>{
+    if(!rows[m.a]||!rows[m.b]||m.a===m.b)return;
+    const r=(nat.res||{})[m.id];if(!r)return;
+    if(r.f){
+      const lo=r.f==="1"?m.a:m.b,wi=r.f==="1"?m.b:m.a;
+      rows[wi].j++;rows[lo].j++;rows[wi].pts+=3;rows[wi].w++;rows[lo].f++;rows[wi].sw+=2;rows[lo].sl+=2;rows[wi].pw+=30;rows[lo].pl+=30;return;
+    }
+    const s=natSets(r);if(!s.done)return;
+    const wi=s.a>s.b?m.a:m.b,lo=s.a>s.b?m.b:m.a;
+    rows[wi].j++;rows[lo].j++;rows[wi].pts+=3;rows[lo].pts+=1;rows[wi].w++;rows[lo].l++;
+    rows[m.a].sw+=s.a;rows[m.a].sl+=s.b;rows[m.b].sw+=s.b;rows[m.b].sl+=s.a;
+    rows[m.a].pw+=s.pa;rows[m.a].pl+=s.pb;rows[m.b].pw+=s.pb;rows[m.b].pl+=s.pa;
+  }));
+  const nm=id=>(nat.teams[id].name||"");
+  return Object.values(rows).sort((x,y)=>(y.pts-x.pts)||((y.sw-y.sl)-(x.sw-x.sl))||((y.pw-y.pl)-(x.pw-x.pl))||nm(x.id).localeCompare(nm(y.id),"fr"));
+}
+function natOrder(ms){
+  const n=ms.length;if(n<2)return ms.slice();
+  const used=Array(n).fill(false),out=[];let nodes=0;
+  const share=(x,y)=>x[0]===y[0]||x[0]===y[1]||x[1]===y[0]||x[1]===y[1];
+  const go=()=>{
+    if(out.length===n)return true;
+    if(++nodes>60000)return false;
+    for(let i=0;i<n;i++){
+      if(used[i]||(out.length&&share(out[out.length-1],ms[i])))continue;
+      used[i]=true;out.push(ms[i]);
+      if(go())return true;
+      out.pop();used[i]=false;
+    }
+    return false;
+  };
+  return go()?out.slice():null;
+}
+function natCheck(ms,nameOf){
+  const out=[],c={};
+  ms.forEach(m=>[m[0],m[1]].forEach(t=>{if(t)c[t]=(c[t]||0)+1}));
+  Object.keys(c).forEach(t=>{if(c[t]>2)out.push(nameOf(t)+" joue "+c[t]+" parties (2 maximum par journée)")});
+  for(let i=1;i<ms.length;i++){
+    const a=ms[i-1],b=ms[i];
+    [a[0],a[1]].forEach(t=>{if(t&&(t===b[0]||t===b[1]))out.push(nameOf(t)+" enchaîne deux parties (parties "+i+" et "+(i+1)+")")});
+  }
+  return out;
+}
+function natRounds(ids){
+  const t=[...ids];if(t.length%2)t.push(null);
+  const n=t.length,out=[];
+  for(let r=0;r<n-1;r++){
+    const ms=[];
+    for(let i=0;i<n/2;i++){const a=t[i],b=t[n-1-i];if(a&&b)ms.push([a,b])}
+    out.push(ms);
+    t.splice(1,0,t.pop());
+  }
+  return out;
+}
 /*END*/
 
 (function(){
@@ -524,6 +764,8 @@ let db=null,myId=null,isAdmin=false,demo=false,readonly=false,snap=null;
 try{const se=document.getElementById("snap");if(se&&se.textContent.trim())snap=JSON.parse(se.textContent)}catch(e){}
 let players=[],entries=[],tournaments=[],births={};
 let loaded={players:false,entries:false,tournaments:false};
+let natA={teams:{},days:[],res:{},fin:{}},natConfirm="";
+const normNat=x=>({teams:{...((x&&x.teams)||{})},days:((x&&x.days)||[]).map(d=>({...d,ms:(d.ms||[]).map(m=>({...m}))})),res:{...((x&&x.res)||{})},fin:{...((x&&x.fin)||{})}});
 let drawing=false,drawPrev=null;
 let selId=null,pendingRender=false,filledFor=null,confirmKey=null,confirmTimer=null;
 let queue=Promise.resolve();
@@ -641,7 +883,7 @@ function loadSnap(){
   readonly=true;
   players=snap.players||[];entries=snap.entries||[];
   tournaments=(snap.tournaments||[]).map(x=>({...DEFAULTS,...x,m:x.m?{...x.m}:{},plan:x.plan?{...x.plan}:null}));
-  loaded={players:true,entries:true,tournaments:true};selId=null;
+  loaded={players:true,entries:true,tournaments:true};selId=null;natA=normNat(snap.nat);
 }
 /* ---------- rendu ---------- */
 function render(){
@@ -660,9 +902,271 @@ function render(){
   else notice.hidden=true;
   $("#noticeWrap").hidden=notice.hidden;
   renderRank(t,pb);renderForm(t,pb);renderPools(t,pb);renderPlanning(t,pb);renderKO(t,pb);renderGeneral(pb);renderOrg(t,pb);
-  renderHome(pb);renderOpen(pb);
+  renderHome(pb);renderOpen(pb);renderNatA();
   $("#tabOrg").hidden=!isAdmin;
 }
+
+/* ---------- National A : affichage et saisie ---------- */
+const natCan=()=>isAdmin&&!demo&&!readonly&&!!db;
+const natTeams=()=>Object.keys(natA.teams).map(id=>({id,...natA.teams[id]})).sort((a,b)=>(a.n||0)-(b.n||0));
+const natName=id=>natA.teams[id]?(natA.teams[id].name||"Équipe"):"À déterminer";
+const natPlayers=x=>[x.p1,x.p2].filter(Boolean).join(" - ");
+const sgn=n=>(n>0?"+":"")+n;
+function natSave(){const d={teams:natA.teams,days:natA.days,res:natA.res,fin:natA.fin||{}};return enqueue(()=>db.doc("nat/a").set(d))}
+const natAllMatches=()=>natA.days.flatMap((d,di)=>(d.ms||[]).map(m=>({...m,di})));
+let natLastTab="";
+function natMatchCard(m,mi,edit,cx){
+  const known=!!(m.a&&m.b&&natA.teams[m.a]&&natA.teams[m.b]);
+  const r=natA.res[m.id]||{},st=natStatus(r),s=natSets(r),f=r.f||"",win=known?natWinner(m,r):null;
+  const label={avenir:"À jouer",cours:"En cours",fin:"Terminé",forfait:"Forfait"}[st];
+  const time=edit?'<input class="mc-ti" data-live data-na="mh" data-di="'+cx.di+'" data-mi="'+mi+'" type="time" value="'+esc(m.h||"")+'" aria-label="Heure de la partie '+(mi+1)+'">':(m.h?'<span class="mc-h">'+esc(m.h)+'</span>':'<span class="mc-h none">–</span>');
+  let h='<article class="mc '+st+(mi%2?" nv":" wh")+'"><header><span>Partie '+(mi+1)+'</span>'+time+'<span class="mc-st">'+label+'</span></header>';
+  if(!edit&&!known)return h+'<p class="mc-vs note">Équipes à déterminer.</p></article>';
+  if(!edit&&st==="avenir")return h+'<p class="mc-vs"><b>'+esc(natName(m.a))+'</b> / <b>'+esc(natName(m.b))+'</b></p></article>';
+  const ro=!edit||!known||!!f;
+  const row=side=>{
+    const id=m[side],o=side==="a"?"b":"a";
+    const cells=[1,2,3].map(i=>{
+      let v=r[side+i],w=r[o+i];
+      if(f){v=i<3?(f===(side==="a"?"1":"2")?0:15):"";w=i<3?(v===0?15:0):""}
+      const filled=v!==undefined&&v!==null&&v!=="";
+      if(!ro)return '<td><input data-live data-na="res" data-mid="'+esc(m.id)+'" data-f="'+side+i+'" type="number" inputmode="numeric" min="0" max="'+NSETMAX[i-1]+'" value="'+esc(filled?v:"")+'" aria-label="Manche '+i+', '+esc(natName(id))+'"></td>';
+      const won=filled&&w!==undefined&&w!==""&&num(v)>num(w);
+      return '<td class="'+(won?"ws":"")+'">'+(filled?esc(v):'<span class="dim">·</span>')+'</td>';
+    }).join("");
+    const tot=f?(f===(side==="a"?"1":"2")?0:2):(side==="a"?s.a:s.b);
+    const fon=f===(side==="a"?"1":"2");
+    const name=edit?'<span class="nm"><select data-na="mt" data-di="'+cx.di+'" data-mi="'+mi+'" data-side="'+side+'" aria-label="Équipe '+(side==="a"?1:2)+'">'+cx.opt(id)+'</select>'+(known?'<button class="fbtn'+(fon?" on":"")+'" type="button" data-naact="forf" data-mid="'+esc(m.id)+'" data-side="'+side+'" aria-pressed="'+fon+'" title="Forfait de cette équipe" aria-label="Forfait : '+esc(natName(id))+'">F</button>':"")+'</span>':esc(natName(id));
+    return '<tr class="'+(win===id?"win":"")+'"><th scope="row" class="sn">'+name+'</th>'+cells+'<td class="tot">'+((st==="avenir"||!known)?'<span class="dim">·</span>':tot)+'</td></tr>';
+  };
+  h+='<table class="sb"><colgroup><col style="width:'+(edit?"38%":"34%")+'"><col><col><col><col style="width:14%"></colgroup><thead><tr><th class="sm"><span class="smt">Manche</span></th><th><span class="lg">Manche </span>1</th><th><span class="lg">Manche </span>2</th><th><span class="lg">Manche </span>3<br>10 pts</th><th>Sets</th></tr></thead><tbody>'+row("a")+row("b")+'</tbody></table>';
+  if(edit){
+    h+='<div class="mc-f">'+
+    '<span class="nd-bt"><button class="btn sm" type="button" data-naact="mup" data-di="'+cx.di+'" data-mi="'+mi+'" aria-label="Monter la partie">↑</button><button class="btn sm" type="button" data-naact="mdown" data-di="'+cx.di+'" data-mi="'+mi+'" aria-label="Descendre la partie">↓</button><button class="btn warn sm" type="button" data-naact="delm" data-di="'+cx.di+'" data-mi="'+mi+'" aria-label="Retirer la partie">Retirer</button></span></div>';
+  }
+  return h+'</article>';
+}
+
+/* ---------- tableau final ---------- */
+const NFIN=[
+  {id:"q1",round:"q",label:"Quart de finale 1",a:["s",0],b:["s",7]},
+  {id:"q2",round:"q",label:"Quart de finale 2",a:["s",3],b:["s",4]},
+  {id:"q3",round:"q",label:"Quart de finale 3",a:["s",1],b:["s",6]},
+  {id:"q4",round:"q",label:"Quart de finale 4",a:["s",2],b:["s",5]},
+  {id:"d1",round:"d",label:"Demi-finale 1",a:["w","q1"],b:["w","q2"]},
+  {id:"d2",round:"d",label:"Demi-finale 2",a:["w","q3"],b:["w","q4"]},
+  {id:"f",round:"f",label:"Finale",a:["w","d1"],b:["w","d2"]}
+];
+const NSEEDN=["1er","2e","3e","4e","5e","6e","7e","8e"];
+function natPoolDone(nat){
+  const ms=(nat.days||[]).flatMap(d=>d.ms||[]);
+  return Object.keys(nat.teams||{}).length>=8&&ms.length>0&&ms.every(m=>m.a&&m.b&&["fin","forfait"].includes(natStatus((nat.res||{})[m.id])));
+}
+function natBracket(nat){
+  const done=natPoolDone(nat);
+  const seeds=done?natStandings(nat).slice(0,8).map(r=>r.id):[];
+  const byId={};
+  NFIN.forEach(d=>{
+    const side=(x,o)=>{
+      if(x[0]==="s")return {id:seeds[x[1]]||"",tag:NSEEDN[x[1]],seed:x[1]+1};
+      const src=byId[x[1]];return {id:src&&src.win?src.win:"",tag:"Vainqueur "+(src?src.short:""),seed:0};
+    };
+    const A=side(d.a),B=side(d.b),r=(nat.fin||{})[d.id]||{};
+    const known=!!(A.id&&B.id);
+    const m={id:d.id,round:d.round,label:d.label,short:d.round==="q"?"QF"+d.id.slice(1):d.round==="d"?"DF"+d.id.slice(1):"finale",A,B,known,r};
+    m.win=known?natWinner({a:A.id,b:B.id},r):null;
+    byId[d.id]=m;
+  });
+  return {done,list:NFIN.map(d=>byId[d.id])};
+}
+const natDateFr=v=>{
+  if(!v)return "";
+  const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})$/);if(!m)return String(v);
+  try{return new Date(Date.UTC(+m[1],+m[2]-1,+m[3],12)).toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"long",year:"numeric",timeZone:"UTC"})}catch(e){return String(v)}
+};
+function natFinCard(m,i,edit){
+  const r=m.r,f=r.f||"",st=m.known?natStatus(r):"avenir",s=natSets(r);
+  const label=m.known?{avenir:"À jouer",cours:"En cours",fin:"Terminé",forfait:"Forfait"}[st]:"À déterminer";
+  const when=edit&&m.known?'<span class="bk-w"><input class="mc-ti bk-d" data-live data-na="fd" data-mid="'+m.id+'" type="date" value="'+esc(r.d||"")+'" aria-label="Jour : '+esc(m.label)+'"><input class="mc-ti" data-live data-na="fh" data-mid="'+m.id+'" type="time" value="'+esc(r.h||"")+'" aria-label="Heure : '+esc(m.label)+'"></span>':(r.d||r.h?'<span class="mc-h bk-wp">'+esc(natDateFr(r.d))+(r.d&&r.h?" · ":"")+esc(r.h||"")+'</span>':'<span class="mc-h none bk-wp">Date à venir</span>');
+  let h='<article class="mc bk '+(m.round==="f"?"bk-f ":"")+st+(i%2?" nv":" wh")+'"><header><span>'+esc(m.label)+'</span><span class="mc-st">'+label+'</span>'+when+'</header>';
+  const ro=!edit||!m.known||!!f;
+  const row=side=>{
+    const T=side==="a"?m.A:m.B,o=side==="a"?"b":"a";
+    const fon=f===(side==="a"?"1":"2");
+    const cells=[1,2,3].map(k=>{
+      let v=r[side+k],w=r[o+k];
+      if(f){v=k<3?(fon?0:15):"";w=k<3?(v===0?15:0):""}
+      const filled=v!==undefined&&v!==null&&v!=="";
+      if(!ro)return '<td><input data-live data-na="fres" data-mid="'+m.id+'" data-f="'+side+k+'" type="number" inputmode="numeric" min="0" max="'+NSETMAX[k-1]+'" value="'+esc(filled?v:"")+'" aria-label="Manche '+k+', '+esc(natName(T.id))+'"></td>';
+      const won=filled&&w!==undefined&&w!==""&&num(v)>num(w);
+      return '<td class="'+(won?"ws":"")+'">'+(filled?esc(v):'<span class="dim">·</span>')+'</td>';
+    }).join("");
+    const tot=f?(fon?0:2):(side==="a"?s.a:s.b);
+    const nm=T.id?'<span class="bk-n"><b>'+esc(natName(T.id))+'</b>'+(T.seed?'<small>'+NSEEDN[T.seed-1]+'</small>':'')+'</span>':'<span class="bk-n bk-tbd"><b>'+esc(T.tag)+'</b></span>';
+    const fb=edit&&m.known?'<button class="fbtn'+(fon?" on":"")+'" type="button" data-naact="fforf" data-mid="'+m.id+'" data-side="'+side+'" aria-pressed="'+fon+'" title="Forfait de cette équipe" aria-label="Forfait : '+esc(natName(T.id))+'">F</button>':"";
+    return '<tr class="'+(m.win&&m.win===T.id?"win":"")+'"><th scope="row" class="sn"><span class="nm">'+nm+fb+'</span></th>'+cells+'<td class="tot">'+((st==="avenir"||!m.known)?'<span class="dim">·</span>':tot)+'</td></tr>';
+  };
+  h+='<table class="sb"><colgroup><col style="width:'+(edit?"38%":"34%")+'"><col><col><col><col style="width:14%"></colgroup><thead><tr><th class="sm"></th><th>M1</th><th>M2</th><th>M3<br>10 pts</th><th>Sets</th></tr></thead><tbody>'+row("a")+row("b")+'</tbody></table>';
+  return h+'</article>';
+}
+function natFinaleHtml(edit){
+  const nb=natBracket(natA),nT=Object.keys(natA.teams).length;
+  let h='<h2>Tableau final</h2>';
+  const tot=(natA.days||[]).reduce((n,d)=>n+(d.ms||[]).length,0);
+  if(!nb.done){
+    let why;
+    if(nT<8)why="Il faut au moins 8 équipes pour former le tableau final (quarts de finale). Équipes enregistrées : "+nT+".";
+    else if(!tot)why="Le calendrier des parties de poule n'est pas encore créé.";
+    else why="Le tableau se remplit tout seul à la fin de la dernière partie de poule, d'après le classement général.";
+    h+='<p class="note" style="margin:0 0 18px">'+esc(why)+'</p>';
+  }else h+='<p class="note" style="margin:0 0 18px">Les 8 premiers du classement sont qualifiés : 1er contre 8e, 2e contre 7e, 3e contre 6e, 4e contre 5e. Mêmes règles de jeu que les parties de poule.'+(edit?' Renseignez le jour, l\'heure et le résultat de chaque partie. Les équipes avancent automatiquement.':'')+'</p>';
+  const card=m=>natFinCard(m,m.round==="q"?Number(m.id.slice(1))-1:m.round==="d"?Number(m.id.slice(1)):0,edit);
+  const L=r=>nb.list.filter(m=>m.round===r);
+  const col=(round,title,inner)=>'<div class="bkc bkc-'+round+'"><h3 class="bk-h">'+title+'</h3><div class="bk-l">'+inner+'</div></div>';
+  const q=L("q");
+  h+='<div class="bkt">'+col("q","Quarts de finale",'<div class="bkp">'+card(q[0])+card(q[1])+'</div><div class="bkp">'+card(q[2])+card(q[3])+'</div>')+col("d","Demi-finales",L("d").map(card).join(""))+col("f","Finale",L("f").map(card).join(""))+'</div>';
+  const fm=nb.list.find(m=>m.round==="f");
+  if(fm&&fm.win)h+='<div class="bk-champ"><span>Champion de France National A</span><b>'+esc(natName(fm.win))+'</b>'+(natPlayers(natA.teams[fm.win])?'<small>'+esc(natPlayers(natA.teams[fm.win]))+'</small>':'')+'</div>';
+  return h;
+}
+function natJournee(di,d,edit,teams){
+  const n=di+1,ms=d.ms||[];
+  const opt=sel=>'<option value="">À déterminer</option>'+teams.map(t=>'<option value="'+esc(t.id)+'"'+(t.id===sel?" selected":"")+'>'+esc(t.name)+'</option>').join("");
+  let h='<h2>Journée '+n+'</h2><p class="jmeta"><b>'+esc(d.date||"Date à venir")+'</b>'+(d.place?" · "+esc(d.place):"")+(d.note?'<span class="note" style="display:block">'+esc(d.note)+'</span>':"")+'</p>';
+  if(edit){
+    h+='<details class="jset"><summary>Réglages de la journée</summary><div class="nd-h"><label>Date<input data-live data-na="day" data-di="'+di+'" data-f="date" type="text" placeholder="sam. 19 décembre 2026" value="'+esc(d.date||"")+'"></label><label>Lieu<input data-live data-na="day" data-di="'+di+'" data-f="place" type="text" placeholder="Brive" value="'+esc(d.place||"")+'"></label><label>Précision<input data-live data-na="day" data-di="'+di+'" data-f="note" type="text" placeholder="Facultatif" value="'+esc(d.note||"")+'"></label></div><div class="row"><button class="btn warn sm" type="button" data-naact="delday" data-di="'+di+'">'+(natConfirm==="delday"+di?"Confirmer la suppression":"Supprimer la journée")+'</button></div></details>';
+    const warn=natCheck(ms.filter(m=>m.a&&m.b).map(m=>[m.a,m.b]),natName);
+    if(warn.length)h+='<div class="banner" style="margin-bottom:16px">À vérifier : '+warn.map(esc).join(" · ")+'</div>';
+  }
+  h+='<p class="note" style="margin:0 0 14px">Parties dans l\'ordre de jeu. Chaque partie se joue en 2 manches de 15 points, avec une 3e manche de 10 points en cas d\'égalité.'+(edit?' Bouton F : déclarer le forfait d\'une équipe (cliquer à nouveau pour annuler).':'')+'</p>';
+  h+=ms.length?'<div class="mcs">'+ms.map((m,mi)=>natMatchCard(m,mi,edit,{di,opt})).join("")+'</div>':'<div class="empty"><b>Parties à venir</b>Le planning de cette journée sera publié ici.</div>';
+  if(edit)h+='<div class="row" style="margin-top:16px"><button class="btn sm" type="button" data-naact="addm" data-di="'+di+'">Ajouter une partie</button></div>';
+  return h;
+}
+function renderNatA(){
+  if(!$("#na-classement"))return;
+  const teams=natTeams(),edit=natCan(),rt=parseHash();
+  const tab=rt.v==="nata"?rt.tab:"classement";
+  const all=natAllMatches(),played=all.filter(m=>{const x=natStatus(natA.res[m.id]);return x==="fin"||x==="forfait"}).length;
+  $("#naMeta").textContent="Phase aller · "+teams.length+" équipe"+(teams.length>1?"s":"")+" · "+natA.days.length+" journée"+(natA.days.length>1?"s":"");
+  /* onglets */
+  const nav=$("#naTabs");
+  nav.innerHTML=["classement",...natA.days.map((_,i)=>"j"+(i+1)),"finale","equipes"].map(t=>'<button role="tab" data-ntab="'+t+'" aria-selected="'+(t===tab)+'">'+(t==="classement"?"Classement":t==="equipes"?"Équipes":t==="finale"?"Tableau final":"J"+t.slice(1))+'</button>').join("");
+  if(natLastTab!==tab){natLastTab=tab;const sel=nav.querySelector('[aria-selected="true"]');if(sel)nav.scrollLeft=Math.max(0,sel.offsetLeft-16)}
+  /* classement */
+  let h='<h2>Classement</h2>';
+  if(!teams.length)h+='<div class="empty"><b>Pas encore d\'équipes</b>Le classement apparaît dès que les équipes sont enregistrées.</div>';
+  else{
+    const st=natStandings(natA);
+    h+='<div class="card scroll" style="padding:0"><table class="left"><thead><tr><th>#</th><th>Équipe</th><th>J</th><th>Pts</th><th>GA manches</th><th>GA points</th></tr></thead><tbody>'+
+    st.map((r,i)=>{const tm=natA.teams[r.id];return '<tr><td>'+(i+1)+'</td><td class="team-c">'+esc(tm.name)+(natPlayers(tm)?'<small style="display:block;color:var(--muted);font-weight:400">'+esc(natPlayers(tm))+'</small>':"")+'</td><td>'+r.j+'</td><td class="pts">'+r.pts+'</td><td>'+sgn(r.sw-r.sl)+'</td><td>'+sgn(r.pw-r.pl)+'</td></tr>'}).join("")+'</tbody></table></div>'+
+    '<p class="note" style="margin-top:12px">Victoire 3 points, défaite 1 point, forfait 0 point (la partie est alors comptée 2-0, 15-0 15-0, pour l\'adversaire). À égalité : goal average de manches, puis goal average de points. '+played+' partie'+(played>1?"s":"")+' jouée'+(played>1?"s":"")+' sur '+all.length+'.</p>';
+  }
+  $("#na-classement").innerHTML=h;
+  /* journée */
+  const jm=tab.match(/^j(\d+)$/);
+  if(jm){const di=Number(jm[1])-1,d=natA.days[di];$("#na-journee").innerHTML=d?natJournee(di,d,edit,teams):'<h2>Journée introuvable</h2><div class="empty"><b>Cette journée n\'existe pas</b>Choisissez une journée dans les onglets ci-dessus.</div>'}
+  $("#na-finale").innerHTML=natFinaleHtml(edit);
+  /* équipes */
+  h='<h2>Équipes</h2>';
+  if(edit){
+    h+='<div class="card red" style="margin-bottom:20px"><h3 style="margin-bottom:10px">Ajouter une équipe</h3><form class="form" id="naForm" novalidate><label>Nom de l\'équipe<input id="naName" type="text" placeholder="Brive 1" autocomplete="off"></label><label>Joueur 1<input id="naP1" type="text" placeholder="Prénom NOM" autocomplete="off"></label><label>Joueur 2<input id="naP2" type="text" placeholder="Prénom NOM" autocomplete="off"></label><div class="row"><button class="btn" type="submit" data-naact="addteam">Ajouter l\'équipe</button></div></form></div>';
+  }
+  if(!teams.length)h+='<div class="empty"><b>Aucune équipe</b>Les équipes engagées dans le championnat apparaissent ici.</div>';
+  else if(edit)h+=teams.map(t=>'<div class="na-ted"><input data-live data-na="team" data-id="'+esc(t.id)+'" data-f="name" value="'+esc(t.name||"")+'" aria-label="Nom de l\'équipe"><input data-live data-na="team" data-id="'+esc(t.id)+'" data-f="p1" value="'+esc(t.p1||"")+'" aria-label="Joueur 1"><input data-live data-na="team" data-id="'+esc(t.id)+'" data-f="p2" value="'+esc(t.p2||"")+'" aria-label="Joueur 2"><button class="btn warn sm" type="button" data-naact="delteam" data-id="'+esc(t.id)+'">Retirer</button></div>').join("");
+  else h+=teams.map((t,i)=>'<div class="na-tm"><span class="rk">'+(i+1)+'</span><div><b>'+esc(t.name)+'</b><small>'+esc(natPlayers(t))+'</small></div></div>').join("");
+  if(edit){
+    h+='<div class="card" style="margin-top:26px"><h3 style="margin-bottom:6px">Calendrier</h3><p class="note" style="margin:0 0 10px">'+(natA.days.length?"Le calendrier est créé : chaque journée a son onglet, où vous réglez la date, le lieu, les heures et les parties. Vous pouvez répartir à nouveau les parties ou ajouter une journée.":"Une fois les équipes enregistrées, générez le calendrier : les 7 journées officielles sont créées avec leurs dates et lieux, et les rencontres (chaque équipe affronte une fois toutes les autres) sont réparties sur les 4 premières, avec 2 parties maximum par équipe et par journée et sans parties consécutives.")+'</p><div class="row">'+
+    '<button class="btn sm" type="button" data-naact="gen">'+(natA.days.length&&natConfirm==="gen"?"Confirmer : effacer les parties et les résultats":(natA.days.length?"Répartir à nouveau les parties":"Générer le calendrier"))+'</button>'+
+    (natA.days.length?'<button class="btn sm" type="button" data-naact="addday">Ajouter une journée</button>':"")+'</div></div>';
+  }
+  $("#na-equipes").innerHTML=h;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest&&e.target.closest("[data-naact]");
+  if(!b||!natCan())return;
+  const a=b.dataset.naact,di=Number(b.dataset.di),mi=Number(b.dataset.mi);
+  e.preventDefault();
+  const uid=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  const keep=natConfirm;natConfirm="";
+  if(a==="addteam"){
+    const name=$("#naName").value.trim();
+    if(!name){toast("Indiquez le nom de l'équipe.");return}
+    const n=Math.max(0,...natTeams().map(t=>t.n||0))+1;
+    natA.teams[uid("t")]={name,p1:$("#naP1").value.trim(),p2:$("#naP2").value.trim(),n};
+    natSave();render();toast("Équipe ajoutée.");return;
+  }
+  if(a==="delteam"){
+    const id=b.dataset.id;
+    if(natAllMatches().some(m=>m.a===id||m.b===id)){toast("Cette équipe est dans le calendrier. Retirez-la des parties d'abord.");render();return}
+    delete natA.teams[id];natSave();render();return;
+  }
+  if(a==="gen"){
+    const ids=natTeams().map(t=>t.id);
+    if(ids.length<2){toast("Enregistrez au moins 2 équipes.");render();return}
+    if(natA.days.length&&keep!=="gen"){natConfirm="gen";render();return}
+    if(!natA.days.length)natA.days=NAT_DAYS.map(([date,place,note,pool])=>({id:uid("d"),date,place,note,pool:!!pool,ms:[]}));
+    natA.days.forEach(d=>{d.ms=[]});
+    const pd=natA.days.filter(d=>d.pool!==false);
+    const tgt=pd.length?pd:[...natA.days];
+    const rounds=natRounds(ids),need=Math.ceil(rounds.length/2);
+    if(need>tgt.length)natA.days.filter(d=>d.pool===false).forEach(d=>{if(tgt.length<need)tgt.push(d)});
+    let bad=0;
+    natSpread(rounds,tgt.length).forEach((ms,i)=>{const o=natOrder(ms);if(!o)bad++;tgt[i].ms=(o||ms).map(([x,y],k)=>({id:uid("m")+k,a:x,b:y}))});
+    natA.res={};natSave();render();
+    toast(need>tgt.length?"Attention : trop d'équipes pour tenir 2 parties maximum par équipe et par journée.":(bad?"Calendrier généré, mais "+bad+" journée(s) à vérifier (parties qui s'enchaînent).":"Calendrier généré : 2 parties maximum par équipe et par journée, sans parties consécutives."));return;
+  }
+  if(a==="fforf"){
+    const id=b.dataset.mid,v=b.dataset.side==="a"?"1":"2";natA.fin=natA.fin||{};
+    const r={...(natA.fin[id]||{})};if(r.f===v)delete r.f;else r.f=v;
+    if(Object.keys(r).length)natA.fin[id]=r;else delete natA.fin[id];
+    natSave();render();return;
+  }
+  if(a==="forf"){
+    const id=b.dataset.mid,v=b.dataset.side==="a"?"1":"2",r={...(natA.res[id]||{})};
+    if(r.f===v)delete r.f;else r.f=v;
+    if(Object.keys(r).length)natA.res[id]=r;else delete natA.res[id];
+    natSave();render();return;
+  }
+  if(a==="addday"){natA.days.push({id:uid("d"),date:"",place:"",note:"",pool:false,ms:[]});natSave();render();return}
+  if(a==="delday"){
+    if(keep!=="delday"+di){natConfirm="delday"+di;render();return}
+    (natA.days[di].ms||[]).forEach(m=>delete natA.res[m.id]);
+    natA.days.splice(di,1);natSave();location.hash="nat-a-classement";render();return;
+  }
+  if(a==="addm"){natA.days[di].ms.push({id:uid("m"),a:"",b:""});natSave();render();return}
+  if(a==="mup"||a==="mdown"){const ms=natA.days[di].ms,j=a==="mup"?mi-1:mi+1;if(j>=0&&j<ms.length){[ms[mi],ms[j]]=[ms[j],ms[mi]];natSave()}render();return}
+  if(a==="delm"){const m=natA.days[di].ms[mi];if(m)delete natA.res[m.id];natA.days[di].ms.splice(mi,1);natSave();render();return}
+});
+document.addEventListener("submit",e=>{if(e.target&&e.target.id==="naForm"){e.preventDefault();const b=e.target.querySelector("[data-naact=addteam]");if(b)b.click()}});
+document.addEventListener("change",e=>{
+  const x=e.target,k=x.dataset&&x.dataset.na;
+  if(!k||!natCan())return;
+  const di=Number(x.dataset.di),mi=Number(x.dataset.mi);
+  if(k==="team"){const t=natA.teams[x.dataset.id];if(!t)return;const v=x.value.trim();if(x.dataset.f==="name"&&!v){toast("Le nom ne peut pas être vide.");render();return}t[x.dataset.f]=v}
+  else if(k==="day"){natA.days[di][x.dataset.f]=x.value.trim()}
+  else if(k==="mh"){const ms=natA.days[di].ms,m=ms[mi];if(m){if(x.value)m.h=x.value;else delete m.h;
+    const slots=[];ms.forEach((q,i)=>{if(q.h)slots.push(i)});
+    const sorted=slots.map(i=>ms[i]).map((q,i)=>[q,i]).sort((u,v)=>u[0].h<v[0].h?-1:u[0].h>v[0].h?1:u[1]-v[1]).map(u=>u[0]);
+    slots.forEach((i,n)=>{ms[i]=sorted[n]})}}
+  else if(k==="fd"||k==="fh"||k==="fres"){
+    const id=x.dataset.mid;if(!NFIN.some(q=>q.id===id))return;
+    natA.fin=natA.fin||{};const r={...(natA.fin[id]||{})};
+    if(k==="fd"){if(x.value)r.d=x.value;else delete r.d}
+    else if(k==="fh"){if(x.value)r.h=x.value;else delete r.h}
+    else{const f=x.dataset.f,i=Number(f.slice(1));if(x.value==="")delete r[f];else r[f]=Math.min(NSETMAX[i-1],Math.max(0,Math.round(num(x.value))))}
+    if(Object.keys(r).length)natA.fin[id]=r;else delete natA.fin[id];
+  }
+  else if(k==="mt"){const m=natA.days[di].ms[mi];if(m)m[x.dataset.side]=x.value}
+  else if(k==="forf"){const id=x.dataset.mid;const r={...(natA.res[id]||{})};if(x.value)r.f=x.value;else delete r.f;if(Object.keys(r).length)natA.res[id]=r;else delete natA.res[id]}
+  else if(k==="res"){
+    const id=x.dataset.mid,f=x.dataset.f,i=Number(f.slice(1));
+    const r={...(natA.res[id]||{})};
+    if(x.value==="")delete r[f];else r[f]=Math.min(NSETMAX[i-1],Math.max(0,Math.round(num(x.value))));
+    if(Object.keys(r).length)natA.res[id]=r;else delete natA.res[id];
+  }
+  natSave();render();
+});
 /* ---------- navigation entre les pages ---------- */
 const TABS=["inscriptions","poules","planning","finale","classement","organisation"];
 function parseHash(){
@@ -670,7 +1174,10 @@ function parseHash(){
   let m;
   if(!h||h==="accueil")return {v:"home"};
   if(h==="open")return {v:"open"};
-  if(h==="nat-a")return {v:"nat",k:"a"};
+  m=h.match(/^nat-a(?:-(classement|equipes|finale|j\d+))?$/);
+  if(m)return {v:"nata",tab:m[1]||"classement"};
+  m=h.match(/^nat-a-(?:planning|resultats)(?:-(\d+))?$/);
+  if(m)return {v:"nata",tab:"j"+(m[1]||1)};
   if(h==="nat-b")return {v:"nat",k:"b"};
   m=h.match(/^open-(\d+)(?:-(inscriptions|poules|planning|finale|classement|organisation))?$/);
   if(m)return {v:"stage",stage:Number(m[1]),tab:m[2]||"inscriptions"};
@@ -720,8 +1227,8 @@ function renderHome(pb){
   const card=(cls,href,kick,name,desc,state,go)=>'<a class="comp '+cls+'" href="#'+href+'"><span class="kick">'+kick+'</span><h3>'+name+'</h3><p>'+desc+'</p><div class="state">'+state+'</div><span class="go">'+go+'</span></a>';
   const soon='<span class="st soon">Page en construction</span>';
   comps.innerHTML=
-    card("","open","Séniors masculins","Circuit Open","4 étapes dans la saison, des équipes de 2 joueurs, jusqu'à 12 équipes par étape.",openState,"Choisir une étape →")+
-    card("red","nat-a","Séniors masculins","Championnat de France National A","Résultats et classements de la saison 2026/2027.",soon,"Ouvrir la page →")+
+    card("","open","Séniors masculins","Circuit Open","4 étapes durant la saison, avec pour chaque étape 12 équipes maximum",openState,"Choisir une étape →")+
+    card("red","nat-a","Séniors masculins","Championnat de France National A","Championnat en phase aller : classement, résultats et planning de la saison 2026/2027.",(Object.keys(natA.teams).length?'<span class="st run">'+Object.keys(natA.teams).length+' équipes</span>':soon),"Ouvrir la page →")+
     card("green","nat-b","Séniors masculins","Championnat de France National B","Antichambre du National A : M19, M22, séniors loisirs et joueurs d'autres spécialités.",soon,"Ouvrir la page →");
   const out=$("#results");
   let open;
@@ -738,7 +1245,10 @@ function renderHome(pb){
     }
   }
   const none=n=>'<div class="empty"><b>Aucun résultat pour le moment</b>Les résultats du '+n+' seront publiés ici au fil de la saison.</div>';
-  out.innerHTML='<div class="sub"><h3 class="tt">Circuit Open</h3>'+open+'</div><div class="sub"><h3 class="tt red">Championnat de France National A</h3>'+none("National A")+'</div><div class="sub"><h3 class="tt cons">Championnat de France National B</h3>'+none("National B")+'</div>';
+  const natSt=natStandings(natA);
+  const natPlayed=natSt.some(r=>r.j>0);
+  const natBox=natPlayed?'<div class="card"><ol class="pod">'+natSt.slice(0,3).map((r,i)=>'<li><span class="rk">'+(i+1)+'</span><b>'+esc(natA.teams[r.id].name)+' · '+r.pts+' pts</b></li>').join("")+'</ol><div style="margin-top:14px"><a class="btn" href="#nat-a-classement" style="display:inline-block;text-decoration:none">Voir le classement</a></div></div>':none("National A");
+  out.innerHTML='<div class="sub"><h3 class="tt">Circuit Open</h3>'+open+'</div><div class="sub"><h3 class="tt red">Championnat de France National A</h3>'+natBox+'</div><div class="sub"><h3 class="tt cons">Championnat de France National B</h3>'+none("National B")+'</div>';
 }
 function renderOpen(pb){
   const box=$("#open-stages");if(!box)return;
@@ -814,6 +1324,7 @@ function whoText(el,name,t,board,pb){
   el.textContent=fr(totalOf(board,p.id))+" points au classement général";el.className="who ok";return p;
 }
 function renderForm(t,pb){
+  return; /* inscription par les joueurs retirée : l'organisateur inscrit lui-même */
   $("#regForm").hidden=readonly;
   if(readonly){$("#formTitle").textContent="S'inscrire";return}
   const can=!!db&&!!myId&&!demo&&!!t;
@@ -979,8 +1490,11 @@ function renderGeneral(pb){
   const el=$("#p-classement");
   const board=playerBoard(tournaments);
   const sortedT=[...tournaments].sort((a,b)=>(a.stage||0)-(b.stage||0));
-  const rk=generalRanking(players,board);
-  if(!players.length){el.innerHTML='<h2>Classement général</h2><div class="empty"><b>Aucun joueur enregistré</b>L\'organisateur ajoute la liste des joueurs licenciés dans l\'onglet Organisation.</div>';return}
+  const reg=new Set();
+  entries.forEach(e=>Object.values(e.regs||{}).forEach(r=>{if(r){reg.add(r.p1);reg.add(r.p2)}}));
+  tournaments.forEach(x=>Object.values(x.teams||{}).forEach(r=>{if(r){reg.add(r.p1);reg.add(r.p2)}}));
+  const rk=generalRanking(players.filter(p=>reg.has(p.id)),board);
+  if(!rk.length){el.innerHTML='<h2>Classement général</h2><div class="empty"><b>Aucun joueur inscrit</b>Les joueurs apparaissent ici dès qu\'ils sont inscrits à une étape.</div>';return}
   const head=sortedT.map(x=>'<th>É'+esc(x.stage)+'</th>').join("");
   const rows=rk.map((r,i)=>{
     const cells=sortedT.map(x=>{const f=r.b.res.find(y=>y.tid===x.id);return '<td>'+(f?f.pts:"-")+'</td>'}).join("");
@@ -1245,16 +1759,23 @@ document.addEventListener("focusout",()=>{if(pendingRender)setTimeout(render,0)}
 /* ---------- onglets ---------- */
 function showTab(){
   const r=parseHash();
-  ["home","open","nat","stage"].forEach(v=>{const el=$("#v-"+v);if(el)el.hidden=(v!==r.v)});
+  ["home","open","nat","nata","stage"].forEach(v=>{const el=$("#v-"+v);if(el)el.hidden=(v!==r.v)});
   if(r.v==="nat")renderNat(r.k);
+  if(r.v==="nata"){
+    $("#na-classement").hidden=r.tab!=="classement";
+    $("#na-journee").hidden=!/^j\d+$/.test(r.tab);
+    $("#na-equipes").hidden=r.tab!=="equipes";
+    $("#na-finale").hidden=r.tab!=="finale";
+  }
   if(r.v==="stage"){
     let tab=r.tab;
     if(tab==="organisation"&&(!isAdmin||demo||readonly))tab="inscriptions";
     TABS.forEach(n=>{$("#p-"+n).hidden=n!==tab});
-    document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===tab)));
+    document.querySelectorAll("#v-stage nav.tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===tab)));
   }
 }
-document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{const t=curT();location.hash=stageHash(t?t.stage:1,b.dataset.tab)}));
+document.querySelectorAll("#v-stage nav.tabs button").forEach(b=>b.addEventListener("click",()=>{const t=curT();location.hash=stageHash(t?t.stage:1,b.dataset.tab)}));
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("#v-nata nav.tabs button");if(b)location.hash="nat-a-"+b.dataset.ntab});
 window.addEventListener("hashchange",()=>{try{window.scrollTo(0,0)}catch(e){}render();showTab()});
 
 /* ---------- démarrage ---------- */
@@ -1271,6 +1792,7 @@ async function start(){
   db.collection("players").onSnapshot(s=>{players=s.docs.map(d=>{const x=d.data();const first=x.first||"";return {id:d.id,first,last:x.last||(first?"":x.name||""),name:((first+" "+(x.last||"")).trim())||x.name||""}});done("players");render();showTab()},fail("players"));
   db.collection("entries").onSnapshot(s=>{entries=s.docs.map(d=>({id:d.id,...d.data()}));done("entries");render()},fail("entries"));
   if(isAdmin)db.collection("birth").onSnapshot(s=>{births={};s.docs.forEach(d=>{births[d.id]=d.data().d});render()},()=>{});
+  db.collection("nat").onSnapshot(s=>{const d=s.docs.find(x=>x.id==="a");natA=normNat(d?d.data():null);render()},()=>{});
   db.collection("tournaments").onSnapshot(s=>{tournaments=s.docs.map(d=>{const x=d.data();return {...DEFAULTS,...x,id:d.id,m:x.m?{...x.m}:{},plan:x.plan?{...x.plan}:null}});done("tournaments");render();showTab()},fail("tournaments"));
 }
 start();
