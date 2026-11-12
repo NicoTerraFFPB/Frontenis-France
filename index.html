@@ -1545,7 +1545,7 @@ function renderKO(t,pb){
   const brs=buildBrackets(t),done=poolsDone(t),places=tournamentPlaces(t);
   let h='<h2>Phase finale</h2>';
   h+=done?'<p class="note" style="margin:0 0 14px">Poules terminées. Saisissez les scores au fil des matchs, les points sont attribués automatiquement à la fin.</p>':'<div class="banner" style="margin-bottom:14px">Les noms des équipes seront affichés à la fin des phases de poule. Les cases indiquent pour l\'instant la place à obtenir en poule.</div>';
-  if(t.pools.length===2&&(t.qual||2)===2)h+='<p class="note" style="margin:0 0 14px">Deux poules : les deux premiers de chaque poule vont en tableau principal, en demi-finales croisées (1er A contre 2e B, 1er B contre 2e A). Les suivants vont en tableau consolant (3e A contre 4e B, le 3e de la poule de 4 étant exempt si les poules sont de 3 et 4 équipes).</p>';
+  if(false);
   else if(t.pools.some(p=>p.ids.length!==t.pools[0].ids.length))h+='<p class="note" style="margin:0 0 14px">Poules de tailles différentes : les têtes de série sont classées par taux de victoires, puis goal average moyen (différence de points ÷ parties jouées).</p>';
   if(t.kosets)h+='<p class="note" style="margin:0 0 14px">Format des matchs : tableau principal en 2 manches de 15 points (3e manche de 10 points si besoin), tableau consolant en une seule manche de 20 points.</p>';
   const champ=brs.main?winnerOf(brs.main.rounds[brs.main.R-1][0]):null;
