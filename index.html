@@ -44,7 +44,7 @@ nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto}
 nav.tabs button{font:inherit;font-family:var(--f-display);font-weight:600;font-size:18px;letter-spacing:.08em;text-transform:uppercase;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:12px 14px 9px;cursor:pointer;white-space:nowrap}
 nav.tabs button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--red)}
 nav.tabs button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:1px}
-main{padding-block:28px 40px;display:grid;gap:24px}
+main{padding-block:28px 40px;display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
 section.panel[hidden]{display:none}
 .banner{background:var(--surface);border-left:4px solid var(--red);padding:12px 16px;font-size:15px;color:var(--ink)}
 .note{color:var(--muted);font-size:15px}
@@ -260,12 +260,26 @@ td.nq{border-left:4px solid transparent}
 .sub:first-of-type{margin-top:0}
 .sub h3.tt{border-top:3px solid var(--blue);padding-top:10px;margin-bottom:14px}
 .sub h3.tt.cons{border-top-color:var(--green)}
-.bracket{display:flex;gap:26px;overflow-x:auto;padding-bottom:10px}
-.round{flex:0 0 280px;display:grid;align-content:space-around;gap:14px}
-.round h4{margin:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tree{--cw:300px;--cg:60px;overflow-x:auto;padding:4px 2px 12px;max-width:100%}
+.sub{min-width:0}
+.bracket{display:flex;gap:var(--cg);min-width:min-content;align-items:stretch}
+.round{flex:0 0 var(--cw);display:flex;flex-direction:column;gap:10px}
+.round h4{margin:0;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.rl{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:16px;position:relative}
+.bkp{display:flex;flex-direction:column;gap:16px;position:relative}
+.km{position:relative;box-shadow:0 2px 0 rgba(18,35,63,.06)}
+.rd:not(.last) .km::after{content:"";position:absolute;left:100%;top:50%;width:calc(var(--cg) / 2);border-top:2px solid var(--muted)}
+.rd:not(.first) .km::before{content:"";position:absolute;right:100%;top:50%;width:calc(var(--cg) / 2);border-top:2px solid var(--muted)}
+.rd:not(.last) .bkp::after{content:"";position:absolute;left:calc(100% + var(--cg) / 2 - 2px);top:25%;bottom:25%;border-left:2px solid var(--muted)}
+.km.fin{border-top:4px solid var(--red)}
+.km.fin .kt{padding-top:12px;padding-bottom:12px}
+.km.pet{border-top:4px solid var(--soft)}
+.pfrow{margin-top:18px;display:flex}
+.pfrow .round{flex:0 0 var(--cw)}
+.pfrow .km::before,.pfrow .km::after{display:none}
 .km{background:var(--surface);border:1px solid var(--line)}
 .km .tag{padding:3px 10px;font-size:12px;background:var(--hl);color:var(--hl-ink);font-weight:500}
-.kt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px}
+.kt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font-size:15px}
 .kt:last-child{border-bottom:0}
 .kt .n{overflow-wrap:anywhere}
 .kt.win .n{font-weight:600}
@@ -500,7 +514,7 @@ footer.foot .wrap{padding-block:16px max(16px,env(safe-area-inset-bottom,0px));f
 <datalist id="roster"></datalist>
 <div class="toast" id="toast" hidden></div>
 
-<script type="application/json" id="snap">{"at": "2026-11-09", "players": [{"first": "Ion", "last": "AUBE", "id": "j01", "name": "Ion AUBE"}, {"first": "Axel", "last": "BEAU", "id": "j02", "name": "Axel BEAU"}, {"first": "Bastien", "last": "FERREIRA PINTO", "id": "j03", "name": "Bastien FERREIRA PINTO"}, {"first": "Lucas", "last": "BELASCAIN", "id": "j04", "name": "Lucas BELASCAIN"}, {"first": "Remi", "last": "BOURTAYRE", "id": "j05", "name": "Remi BOURTAYRE"}, {"first": "Titouan", "last": "BRANA COZ", "id": "j06", "name": "Titouan BRANA COZ"}, {"first": "Oilhan", "last": "COUSSAN", "id": "j07", "name": "Oilhan COUSSAN"}, {"first": "Théo", "last": "COSTA", "id": "j08", "name": "Théo COSTA"}, {"first": "Clément", "last": "DESPAGNE", "id": "j09", "name": "Clément DESPAGNE"}, {"first": "Eneko", "last": "HOURCADE", "id": "j10", "name": "Eneko HOURCADE"}, {"first": "Pablo", "last": "ETCHEVERRIA", "id": "j11", "name": "Pablo ETCHEVERRIA"}, {"first": "Mathias", "last": "FORDIN", "id": "j12", "name": "Mathias FORDIN"}, {"first": "Morgan", "last": "FAYOL", "id": "j13", "name": "Morgan FAYOL"}, {"first": "Lucas", "last": "NONNON DUFFOUR", "id": "j14", "name": "Lucas NONNON DUFFOUR"}, {"first": "Mattin", "last": "ITTURIA", "id": "j15", "name": "Mattin ITTURIA"}, {"first": "Flavien", "last": "JOLY", "id": "j16", "name": "Flavien JOLY"}, {"first": "Alex", "last": "JANY", "id": "j17", "name": "Alex JANY"}, {"first": "Jokin", "last": "CHAUVIERE AGUERRE", "id": "j18", "name": "Jokin CHAUVIERE AGUERRE"}, {"first": "Theo", "last": "LASSALLE", "id": "j19", "name": "Theo LASSALLE"}, {"first": "Alex", "last": "MARQUE", "id": "j20", "name": "Alex MARQUE"}, {"first": "Pako", "last": "MONTOLIEU", "id": "j21", "name": "Pako MONTOLIEU"}, {"first": "Théo", "last": "OURTHIAGE", "id": "j22", "name": "Théo OURTHIAGE"}, {"first": "Elie", "last": "PUCHEUX", "id": "j23", "name": "Elie PUCHEUX"}, {"first": "Kevin", "last": "PUCHEUX", "id": "j24", "name": "Kevin PUCHEUX"}, {"first": "Léo", "last": "PEROL", "id": "j25", "name": "Léo PEROL"}, {"first": "Mael", "last": "PUCHEUX", "id": "j26", "name": "Mael PUCHEUX"}, {"first": "Théo", "last": "PUCHEUX", "id": "j27", "name": "Théo PUCHEUX"}, {"first": "Tom", "last": "PEROL", "id": "j28", "name": "Tom PEROL"}, {"first": "Florian", "last": "SIGNARBIEUX", "id": "j29", "name": "Florian SIGNARBIEUX"}, {"first": "Hugo", "last": "SOURBES", "id": "j30", "name": "Hugo SOURBES"}, {"first": "Robin", "last": "TOURON", "id": "j31", "name": "Robin TOURON"}, {"first": "Aritz", "last": "AZPEITIA", "id": "j32", "name": "Aritz AZPEITIA"}, {"first": "Nicolas", "last": "TERRANOVA", "id": "pmw4yxtgglq0g", "name": "Nicolas TERRANOVA"}, {"first": "Andoni", "last": "CASTERA", "id": "pmw6cie7mnv3w", "name": "Andoni CASTERA"}, {"first": "Jean Baptiste", "last": "DUPRAT", "id": "pmw6eji2nuft0", "name": "Jean Baptiste DUPRAT"}], "entries": [{"regs": {"etape-1": {"createdAt": 1794052467015, "p1": "j01", "p2": "pmw6cie7mnv3w"}}, "id": "e1"}, {"regs": {"etape-1": {"createdAt": 1794055587484, "p1": "j03", "p2": "j31"}}, "id": "e2"}, {"regs": {"etape-1": {"createdAt": 1794165422453, "p1": "j14", "p2": "j25"}}, "id": "e3"}, {"regs": {"etape-1": {"createdAt": 1794207947941, "p1": "pmw4yxtgglq0g", "p2": "j27"}}, "id": "e4"}, {"regs": {"etape-1": {"createdAt": 1794253659270, "p1": "j19", "p2": "j07"}}, "id": "e5"}, {"regs": {"etape-1": {"createdAt": 1794253785446, "p1": "j15", "p2": "j06"}}, "id": "e6"}, {"regs": {"etape-1": {"createdAt": 1794052427482, "p1": "j05", "p2": "j12"}}, "id": "e7"}], "tournaments": [{"createdAt": 1, "date": "21 et 22 novembre 2026", "gf": "1 Carte INTERSPORT d'une valeur de 25€/joueurs", "gs": "", "gw": "1 Carte INTERSPORT d'une valeur de 40€/joueurs", "m": {}, "maxTeams": 12, "name": "Open BRIVE", "place": "Brive", "plan": {"P0__e1__e2": {"j": "Samedi"}, "P0__e2__e5": {"h": "20:56"}, "P0__e4__e1": {"h": "21:13", "j": "Samedi"}}, "poolSize": 4, "pools": null, "qual": 2, "regOpen": true, "stage": 1, "teams": null, "tie": "after", "id": "etape-1"}, {"createdAt": 2, "date": "23 et 24 janvier 2027", "m": {}, "maxTeams": 12, "name": "Étape 2", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 2, "teams": null, "id": "etape-2"}, {"createdAt": 3, "date": "6 et 7 mars 2027", "m": {}, "maxTeams": 12, "name": "Étape 3", "place": "Mont", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 3, "teams": null, "id": "etape-3"}, {"createdAt": 4, "date": "10 et 11 juillet 2027", "m": {}, "maxTeams": 12, "name": "Étape 4", "place": "Biarritz Fal", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 4, "teams": null, "id": "etape-4"}], "nat": {"teams": {}, "days": [{"date": "sam. 19 décembre 2026", "id": "dmw6szoq2wft", "ms": [], "note": "", "place": "Brive", "pool": true}, {"date": "sam. 20 février 2027", "id": "dmw6szoq2jeu", "ms": [], "note": "", "place": "Portet-sur-Garonne", "pool": true}, {"date": "sam. 27 mars 2027", "id": "dmw6szoq2q28", "ms": [], "note": "", "place": "Biarritz - Fal", "pool": true}, {"date": "sam. 24 avril 2027", "id": "dmw6szoq2cdd", "ms": [], "note": "", "place": "Le Haillan", "pool": true}, {"date": "sam. 19 juin 2027", "id": "dmw6szoq2y9b", "ms": [], "note": "", "place": "Lieu à définir", "pool": false}], "res": {}, "fin": {}}}</script>
+<script type="application/json" id="snap">{"at": "2026-11-12", "players": [{"first": "Ion", "last": "AUBE", "id": "j01", "name": "Ion AUBE"}, {"first": "Axel", "last": "BEAU", "id": "j02", "name": "Axel BEAU"}, {"first": "Bastien", "last": "FERREIRA PINTO", "id": "j03", "name": "Bastien FERREIRA PINTO"}, {"first": "Lucas", "last": "BELASCAIN", "id": "j04", "name": "Lucas BELASCAIN"}, {"first": "Remi", "last": "BOURTAYRE", "id": "j05", "name": "Remi BOURTAYRE"}, {"first": "Titouan", "last": "BRANA COZ", "id": "j06", "name": "Titouan BRANA COZ"}, {"first": "Oilhan", "last": "COUSSAN", "id": "j07", "name": "Oilhan COUSSAN"}, {"first": "Théo", "last": "COSTA", "id": "j08", "name": "Théo COSTA"}, {"first": "Clément", "last": "DESPAGNE", "id": "j09", "name": "Clément DESPAGNE"}, {"first": "Eneko", "last": "HOURCADE", "id": "j10", "name": "Eneko HOURCADE"}, {"first": "Pablo", "last": "ETCHEVERRIA", "id": "j11", "name": "Pablo ETCHEVERRIA"}, {"first": "Mathias", "last": "FORDIN", "id": "j12", "name": "Mathias FORDIN"}, {"first": "Morgan", "last": "FAYOL", "id": "j13", "name": "Morgan FAYOL"}, {"first": "Lucas", "last": "NONNON DUFFOUR", "id": "j14", "name": "Lucas NONNON DUFFOUR"}, {"first": "Mattin", "last": "ITTURIA", "id": "j15", "name": "Mattin ITTURIA"}, {"first": "Flavien", "last": "JOLY", "id": "j16", "name": "Flavien JOLY"}, {"first": "Alex", "last": "JANY", "id": "j17", "name": "Alex JANY"}, {"first": "Jokin", "last": "CHAUVIERE AGUERRE", "id": "j18", "name": "Jokin CHAUVIERE AGUERRE"}, {"first": "Theo", "last": "LASSALLE", "id": "j19", "name": "Theo LASSALLE"}, {"first": "Alex", "last": "MARQUE", "id": "j20", "name": "Alex MARQUE"}, {"first": "Pako", "last": "MONTOLIEU", "id": "j21", "name": "Pako MONTOLIEU"}, {"first": "Théo", "last": "OURTHIAGE", "id": "j22", "name": "Théo OURTHIAGE"}, {"first": "Elie", "last": "PUCHEUX", "id": "j23", "name": "Elie PUCHEUX"}, {"first": "Kevin", "last": "PUCHEUX", "id": "j24", "name": "Kevin PUCHEUX"}, {"first": "Léo", "last": "PEROL", "id": "j25", "name": "Léo PEROL"}, {"first": "Mael", "last": "PUCHEUX", "id": "j26", "name": "Mael PUCHEUX"}, {"first": "Théo", "last": "PUCHEUX", "id": "j27", "name": "Théo PUCHEUX"}, {"first": "Tom", "last": "PEROL", "id": "j28", "name": "Tom PEROL"}, {"first": "Florian", "last": "SIGNARBIEUX", "id": "j29", "name": "Florian SIGNARBIEUX"}, {"first": "Hugo", "last": "SOURBES", "id": "j30", "name": "Hugo SOURBES"}, {"first": "Robin", "last": "TOURON", "id": "j31", "name": "Robin TOURON"}, {"first": "Aritz", "last": "AZPEITIA", "id": "j32", "name": "Aritz AZPEITIA"}, {"first": "Nicolas", "last": "TERRANOVA", "id": "pmw4yxtgglq0g", "name": "Nicolas TERRANOVA"}, {"first": "Andoni", "last": "CASTERA", "id": "pmw6cie7mnv3w", "name": "Andoni CASTERA"}, {"first": "Jean Baptiste", "last": "DUPRAT", "id": "pmw6eji2nuft0", "name": "Jean Baptiste DUPRAT"}], "entries": [{"regs": {"etape-1": {"createdAt": 1794052467015, "p1": "j01", "p2": "pmw6cie7mnv3w"}}, "id": "e1"}, {"regs": {"etape-1": {"createdAt": 1794055587484, "p1": "j03", "p2": "j31"}}, "id": "e2"}, {"regs": {"etape-1": {"createdAt": 1794165422453, "p1": "j14", "p2": "j25"}}, "id": "e3"}, {"regs": {"etape-1": {"createdAt": 1794207947941, "p1": "pmw4yxtgglq0g", "p2": "j27"}}, "id": "e4"}, {"regs": {"etape-1": {"createdAt": 1794253659270, "p1": "j19", "p2": "j07"}}, "id": "e5"}, {"regs": {"etape-1": {"createdAt": 1794253785446, "p1": "j15", "p2": "j06"}}, "id": "e6"}, {"regs": {"etape-1": {"createdAt": 1794470836674, "p1": "j28", "p2": "j22"}}, "id": "e7"}, {"regs": {"etape-1": {"createdAt": 1794052427482, "p1": "j05", "p2": "j12"}}, "id": "e8"}], "tournaments": [{"createdAt": 1, "date": "21 et 22 novembre 2026", "gf": "1 Carte INTERSPORT d'une valeur de 25€/joueurs", "gs": "", "gw": "1 Carte INTERSPORT d'une valeur de 40€/joueurs", "m": {}, "maxTeams": 12, "name": "Open BRIVE", "place": "Brive", "plan": {"P0__e1__e2": {"j": "Samedi"}, "P0__e2__e5": {"h": "20:56"}, "P0__e3__e2": {"h": "17:00", "j": "Samedi"}, "P0__e3__e6": {"h": "13:00", "j": "Samedi"}, "P0__e3__e7": {"h": "15:00", "j": "Samedi"}, "P0__e4__e1": {"h": "21:13", "j": "Samedi"}, "P0__e6__e2": {"h": "16:00", "j": "Samedi"}, "P0__e6__e7": {"h": "18:00", "j": "Samedi"}, "P0__e7__e2": {"h": "14:00", "j": "Samedi"}, "P1__e4__e1": {"h": "14:30", "j": "Samedi"}, "P1__e5__e1": {"h": "17:30", "j": "Samedi"}, "P1__e5__e4": {"h": "15:30", "j": "Samedi"}, "P1__e5__e8": {"h": "13:30", "j": "Samedi"}, "P1__e8__e1": {"h": "16:30", "j": "Samedi"}, "P1__e8__e4": {"h": "18:30", "j": "Samedi"}}, "poolSize": 4, "pools": [{"ids": ["e3", "e6", "e7", "e2"]}, {"ids": ["e5", "e8", "e4", "e1"]}], "qual": 2, "regOpen": false, "stage": 1, "teams": {"e1": {"avg": 0, "bt": null, "createdAt": 1794052467015, "p1": "j01", "p2": "pmw6cie7mnv3w", "seed": 7}, "e2": {"avg": 0, "bt": null, "createdAt": 1794055587484, "p1": "j03", "p2": "j31", "seed": 8}, "e3": {"avg": 0, "bt": null, "createdAt": 1794165422453, "p1": "j14", "p2": "j25", "seed": 1}, "e4": {"avg": 0, "bt": null, "createdAt": 1794207947941, "p1": "pmw4yxtgglq0g", "p2": "j27", "seed": 6}, "e5": {"avg": 0, "bt": null, "createdAt": 1794253659270, "p1": "j19", "p2": "j07", "seed": 2}, "e6": {"avg": 0, "bt": null, "createdAt": 1794253785446, "p1": "j15", "p2": "j06", "seed": 4}, "e7": {"avg": 0, "bt": null, "createdAt": 1794470836674, "p1": "j28", "p2": "j22", "seed": 5}, "e8": {"avg": 0, "bt": null, "createdAt": 1794052427482, "p1": "j05", "p2": "j12", "seed": 3}}, "tie": "after", "id": "etape-1"}, {"createdAt": 2, "date": "23 et 24 janvier 2027", "m": {}, "maxTeams": 12, "name": "Étape 2", "place": "Brive", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 2, "teams": null, "id": "etape-2"}, {"createdAt": 3, "date": "6 et 7 mars 2027", "m": {}, "maxTeams": 12, "name": "Étape 3", "place": "Mont", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 3, "teams": null, "id": "etape-3"}, {"createdAt": 4, "date": "10 et 11 juillet 2027", "m": {}, "maxTeams": 12, "name": "Étape 4", "place": "Biarritz Fal", "poolSize": 3, "pools": null, "qual": 2, "regOpen": false, "stage": 4, "teams": null, "id": "etape-4"}], "nat": {"teams": {}, "days": [{"date": "sam. 19 décembre 2026", "id": "dmw6szoq2wft", "ms": [], "note": "", "place": "Brive", "pool": true}, {"date": "sam. 20 février 2027", "id": "dmw6szoq2jeu", "ms": [], "note": "", "place": "Portet-sur-Garonne", "pool": true}, {"date": "sam. 27 mars 2027", "id": "dmw6szoq2q28", "ms": [], "note": "", "place": "Biarritz - Fal", "pool": true}, {"date": "sam. 24 avril 2027", "id": "dmw6szoq2cdd", "ms": [], "note": "", "place": "Le Haillan", "pool": true}, {"date": "sam. 19 juin 2027", "id": "dmw6szoq2y9b", "ms": [], "note": "", "place": "Lieu à définir", "pool": false}], "res": {}, "fin": {}}}</script>
 <script>
 /*LOGIC*/
 const ptsForPlace=p=>p<=1?45:p===2?35:p===3?30:p===4?20:p<=8?16:p===9?11:p===10?9:p===11?7:5;
@@ -608,7 +622,9 @@ function buildBrackets(t){
       else consSeeds=[A[2],B[2]].filter(Boolean);
     }
   }
-  return {main:bracketFrom(mainSeeds,"M",t,poolOf),cons:bracketFrom(consSeeds,"C",t,poolOf),mainCount:mainSeeds.length,poolOf};
+  const tags={};rows.forEach(x=>{tags[x.id]=(x.rank+1)+(x.rank===0?"er":"e")+" Poule "+String.fromCharCode(65+x.pi)});
+  const mk=(seeds,prefix)=>{const b=bracketFrom(seeds,prefix,t,poolOf);if(b)b.tags=tags;return b};
+  return {main:mk(mainSeeds,"M"),cons:mk(consSeeds,"C"),mainCount:mainSeeds.length,poolOf};
 }
 function placesOf(br,base){
   if(!br)return {};
@@ -1476,24 +1492,28 @@ function matchRow(t,pb,m){
   return '<div class="mt"><span class="l '+(wa?"w":"")+'">'+esc(teamName(t,pb,m.a))+'</span>'+scoreCell(m.key,r,isAdmin&&!demo)+'<span class="r '+(wb?"w":"")+'">'+esc(teamName(t,pb,m.b))+'</span></div>';
 }
 function bracketHTML(br,t,pb,done,title,base){
-  if(!br)return '<div class="sub"><h3 class="tt'+(title.indexOf("consolant")>0?" cons":"")+'">'+esc(title)+'</h3><div class="empty">Pas assez d\'équipes pour ce tableau.</div></div>';
+  const cls=title.indexOf("consolant")>0?" cons":"";
+  if(!br)return '<div class="sub"><h3 class="tt'+cls+'">'+esc(title)+'</h3><div class="empty">Pas assez d\'équipes pour ce tableau.</div></div>';
   const cols=br.rounds.map((ms,r)=>{
-    let inner='<h4>'+esc(br.labels[r])+'</h4>'+ms.map(m=>koCard(m,t,pb,done)).join("");
-    if(r===br.R-1&&br.petite)inner+='<h4>Petite finale</h4>'+koCard(br.petite,t,pb,done,true);
-    return '<div class="round">'+inner+'</div>';
+    const cards=ms.map(m=>koCard(m,t,pb,done,false,br.tags,r===br.R-1)).map(c=>c);
+    let list;
+    if(r<br.R-1&&ms.length>=2){list="";for(let i=0;i<cards.length;i+=2)list+='<div class="bkp">'+cards[i]+(cards[i+1]||"")+'</div>'}
+    else list=cards.join("");
+    return '<div class="round rd'+(r===0?" first":"")+(r===br.R-1?" last":"")+'"><h4>'+esc(br.labels[r])+'</h4><div class="rl">'+list+'</div></div>';
   }).join("");
-  return '<div class="sub"><h3 class="tt'+(title.indexOf("consolant")>0?" cons":"")+'">'+esc(title)+'</h3><div class="bracket">'+cols+'</div></div>';
+  const pf=br.petite?'<div class="pfrow" style="padding-left:calc('+(br.R-1)+' * (var(--cw) + var(--cg)))"><div class="round"><h4>Petite finale</h4>'+koCard(br.petite,t,pb,done,true,br.tags,false)+'</div></div>':"";
+  return '<div class="sub"><h3 class="tt'+cls+'">'+esc(title)+'</h3><div class="tree"><div class="bracket">'+cols+'</div>'+pf+'</div></div>';
 }
-function koCard(m,t,pb,done,isPetite){
+function koCard(m,t,pb,done,isPetite,tags,isFinal){
   const w=winnerOf(m);
   const edit=isAdmin&&!demo&&done;
   const line=(id,side)=>{
     const known=!!id;
-    const label=known?teamName(t,pb,id):(m.bye?"Exempt":"À déterminer");
+    const label=known?(done?teamName(t,pb,id):((tags&&tags[id])||"Qualifié")):(m.bye?"Exempt":"À déterminer");
     const right=(m.bye||!(m.a&&m.b))?"<span></span>":(edit?'<input data-live data-key="'+esc(m.key)+'" data-side="'+side+'" type="number" inputmode="numeric" min="0" max="20" value="'+esc(m.res&&m.res[side]!=null?m.res[side]:"")+'" aria-label="Score">':'<span class="num">'+esc(m.res&&m.res[side]!=null?m.res[side]:"")+'</span>');
-    return '<div class="kt'+(w&&w===id&&!m.bye?" win":"")+(known?"":" tbd")+'"><span class="n">'+esc(label)+'</span>'+right+'</div>';
+    return '<div class="kt'+(w&&w===id&&!m.bye?" win":"")+(known?"":" tbd")+(known&&!done?" tbd":"")+'"><span class="n">'+esc(label)+'</span>'+right+'</div>';
   };
-  return '<div class="km">'+(m.rematch?'<div class="tag">Déjà croisés en poule</div>':"")+line(m.a,"a")+line(m.b,"b")+'</div>';
+  return '<div class="km'+(isFinal?" fin":"")+(isPetite?" pet":"")+'">'+(m.rematch&&done?'<div class="tag">Déjà croisés en poule</div>':"")+line(m.a,"a")+line(m.b,"b")+'</div>';
 }
 function renderKO(t,pb){
   const el=$("#p-finale");
@@ -1502,7 +1522,7 @@ function renderKO(t,pb){
   }
   const brs=buildBrackets(t),done=poolsDone(t),places=tournamentPlaces(t);
   let h='<h2>Phase finale</h2>';
-  h+=done?'<p class="note" style="margin:0 0 14px">Poules terminées. Saisissez les scores au fil des matchs, les points sont attribués automatiquement à la fin.</p>':'<div class="banner" style="margin-bottom:14px">Tableaux provisoires, d\'après le classement actuel des poules. Les scores se saisissent une fois les poules terminées.</div>';
+  h+=done?'<p class="note" style="margin:0 0 14px">Poules terminées. Saisissez les scores au fil des matchs, les points sont attribués automatiquement à la fin.</p>':'<div class="banner" style="margin-bottom:14px">Les noms des équipes seront affichés à la fin des phases de poule. Les cases indiquent pour l\'instant la place à obtenir en poule.</div>';
   if(t.pools.length===2&&(t.qual||2)===2)h+='<p class="note" style="margin:0 0 14px">Deux poules : les deux premiers de chaque poule vont en tableau principal, en demi-finales croisées (1er A contre 2e B, 1er B contre 2e A). Les suivants vont en tableau consolant (3e A contre 4e B, le 3e de la poule de 4 étant exempt si les poules sont de 3 et 4 équipes).</p>';
   else if(t.pools.some(p=>p.ids.length!==t.pools[0].ids.length))h+='<p class="note" style="margin:0 0 14px">Poules de tailles différentes : les têtes de série sont classées par taux de victoires, puis goal average moyen (différence de points ÷ parties jouées).</p>';
   const champ=brs.main?winnerOf(brs.main.rounds[brs.main.R-1][0]):null;
