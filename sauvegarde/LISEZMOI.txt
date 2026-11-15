@@ -1,0 +1,3 @@
+Sauvegarde automatique des données de l'application Frontenis France.
+Un fichier par document (dossier = collection). Les dates de naissance (privées) ne sont volontairement pas sauvegardées ici.
+Pour restaurer : demander à Claude de réécrire ces documents dans la base de l'application.

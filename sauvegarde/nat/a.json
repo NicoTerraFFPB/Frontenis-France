@@ -1,0 +1,47 @@
+{
+ "days": [
+  {
+   "date": "sam. 19 décembre 2026",
+   "id": "dmw6szoq2wft",
+   "ms": [],
+   "note": "",
+   "place": "Brive",
+   "pool": true
+  },
+  {
+   "date": "sam. 20 février 2027",
+   "id": "dmw6szoq2jeu",
+   "ms": [],
+   "note": "",
+   "place": "Portet-sur-Garonne",
+   "pool": true
+  },
+  {
+   "date": "sam. 27 mars 2027",
+   "id": "dmw6szoq2q28",
+   "ms": [],
+   "note": "",
+   "place": "Biarritz - Fal",
+   "pool": true
+  },
+  {
+   "date": "sam. 24 avril 2027",
+   "id": "dmw6szoq2cdd",
+   "ms": [],
+   "note": "",
+   "place": "Le Haillan",
+   "pool": true
+  },
+  {
+   "date": "sam. 19 juin 2027",
+   "id": "dmw6szoq2y9b",
+   "ms": [],
+   "note": "",
+   "place": "Lieu à définir",
+   "pool": false
+  }
+ ],
+ "fin": {},
+ "res": {},
+ "teams": {}
+}

@@ -1,0 +1,193 @@
+{
+ "createdAt": 1,
+ "date": "21 et 22 novembre 2026",
+ "gf": "1 Carte INTERSPORT d'une valeur de 25€/joueurs",
+ "gs": "",
+ "gw": "1 Carte INTERSPORT d'une valeur de 40€/joueurs",
+ "kosets": true,
+ "m": {},
+ "maxTeams": 12,
+ "name": "Open BRIVE",
+ "place": "Brive",
+ "plan": {
+  "C__0__0": {
+   "h": "09:00",
+   "j": "Dimanche"
+  },
+  "C__0__1": {
+   "h": "09:30",
+   "j": "Dimanche"
+  },
+  "C__1__0": {
+   "h": "13:30",
+   "j": "Dimanche"
+  },
+  "C__P": {
+   "h": "12:00",
+   "j": "Dimanche"
+  },
+  "M__0__0": {
+   "h": "10:00",
+   "j": "Dimanche"
+  },
+  "M__0__1": {
+   "h": "11:00",
+   "j": "Dimanche"
+  },
+  "M__1__0": {
+   "h": "14:00",
+   "j": "Dimanche"
+  },
+  "M__P": {
+   "h": "12:30",
+   "j": "Dimanche"
+  },
+  "P0__mmw6cin2fyj09__mmw6ediu35d3s": {
+   "j": "Samedi"
+  },
+  "P0__mmw6ediu35d3s__mmw9oaw06dvps": {
+   "h": "20:56"
+  },
+  "P0__mmw87ro1hrlq1__mmw6ediu35d3s": {
+   "h": "17:00",
+   "j": "Samedi"
+  },
+  "P0__mmw87ro1hrlq1__mmw9odld1sx7w": {
+   "h": "13:00",
+   "j": "Samedi"
+  },
+  "P0__mmw87ro1hrlq1__mmwd9lr5uxfsg": {
+   "h": "15:00",
+   "j": "Samedi"
+  },
+  "P0__mmw8x34x12fqk__mmw6cin2fyj09": {
+   "h": "21:13",
+   "j": "Samedi"
+  },
+  "P0__mmw9odld1sx7w__mmw6ediu35d3s": {
+   "h": "16:00",
+   "j": "Samedi"
+  },
+  "P0__mmw9odld1sx7w__mmwd9lr5uxfsg": {
+   "h": "18:00",
+   "j": "Samedi"
+  },
+  "P0__mmwd9lr5uxfsg__mmw6ediu35d3s": {
+   "h": "14:00",
+   "j": "Samedi"
+  },
+  "P1__mmw8x34x12fqk__mmw6cin2fyj09": {
+   "h": "14:30",
+   "j": "Samedi"
+  },
+  "P1__mmw9oaw06dvps__mmw6cin2fyj09": {
+   "h": "17:30",
+   "j": "Samedi"
+  },
+  "P1__mmw9oaw06dvps__mmw8x34x12fqk": {
+   "h": "15:30",
+   "j": "Samedi"
+  },
+  "P1__mmw9oaw06dvps__u_2Iixc8V68tABUtBdt_dh7Q": {
+   "h": "13:30",
+   "j": "Samedi"
+  },
+  "P1__u_2Iixc8V68tABUtBdt_dh7Q__mmw6cin2fyj09": {
+   "h": "16:30",
+   "j": "Samedi"
+  },
+  "P1__u_2Iixc8V68tABUtBdt_dh7Q__mmw8x34x12fqk": {
+   "h": "18:30",
+   "j": "Samedi"
+  }
+ },
+ "poolSize": 4,
+ "pools": [
+  {
+   "ids": [
+    "mmw87ro1hrlq1",
+    "mmw9odld1sx7w",
+    "mmwd9lr5uxfsg",
+    "mmw6ediu35d3s"
+   ]
+  },
+  {
+   "ids": [
+    "mmw9oaw06dvps",
+    "u_2Iixc8V68tABUtBdt_dh7Q",
+    "mmw8x34x12fqk",
+    "mmw6cin2fyj09"
+   ]
+  }
+ ],
+ "qual": 2,
+ "regOpen": false,
+ "stage": 1,
+ "teams": {
+  "mmw6cin2fyj09": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794052467015,
+   "p1": "j01",
+   "p2": "pmw6cie7mnv3w",
+   "seed": 7
+  },
+  "mmw6ediu35d3s": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794055587484,
+   "p1": "j03",
+   "p2": "j31",
+   "seed": 8
+  },
+  "mmw87ro1hrlq1": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794165422453,
+   "p1": "j14",
+   "p2": "j25",
+   "seed": 1
+  },
+  "mmw8x34x12fqk": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794207947941,
+   "p1": "pmw4yxtgglq0g",
+   "p2": "j27",
+   "seed": 6
+  },
+  "mmw9oaw06dvps": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794253659270,
+   "p1": "j19",
+   "p2": "j07",
+   "seed": 2
+  },
+  "mmw9odld1sx7w": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794253785446,
+   "p1": "j15",
+   "p2": "j06",
+   "seed": 4
+  },
+  "mmwd9lr5uxfsg": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794470836674,
+   "p1": "j28",
+   "p2": "j22",
+   "seed": 5
+  },
+  "u_2Iixc8V68tABUtBdt_dh7Q": {
+   "avg": 0,
+   "bt": null,
+   "createdAt": 1794052427482,
+   "p1": "j05",
+   "p2": "j12",
+   "seed": 3
+  }
+ },
+ "tie": "after"
+}
