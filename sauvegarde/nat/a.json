@@ -1,10 +1,11 @@
 {
  "days": [
   {
+   "addr": "53 Avenue Léo Lagrange 19100 Brive La Gaillarde",
    "date": "sam. 19 décembre 2026",
    "id": "dmw6szoq2wft",
    "ms": [],
-   "note": "",
+   "note": "Phase de Championnat",
    "place": "Brive",
    "pool": true
   },
@@ -12,7 +13,7 @@
    "date": "sam. 20 février 2027",
    "id": "dmw6szoq2jeu",
    "ms": [],
-   "note": "",
+   "note": "Phase de Championnat",
    "place": "Portet-sur-Garonne",
    "pool": true
   },
@@ -20,7 +21,7 @@
    "date": "sam. 27 mars 2027",
    "id": "dmw6szoq2q28",
    "ms": [],
-   "note": "",
+   "note": "Phase de Championnat",
    "place": "Biarritz - Fal",
    "pool": true
   },
@@ -28,7 +29,7 @@
    "date": "sam. 24 avril 2027",
    "id": "dmw6szoq2cdd",
    "ms": [],
-   "note": "",
+   "note": "Phase de Championnat",
    "place": "Le Haillan",
    "pool": true
   },

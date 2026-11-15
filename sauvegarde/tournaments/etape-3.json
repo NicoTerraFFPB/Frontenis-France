@@ -1,14 +1,20 @@
 {
  "createdAt": 3,
  "date": "6 et 7 mars 2027",
+ "gf": "",
+ "gs": "",
+ "gw": "",
+ "kosets": false,
  "m": {},
  "maxTeams": 12,
- "name": "Étape 3",
+ "name": "OPEN MONT",
  "place": "Mont",
+ "plan": null,
  "poolSize": 3,
  "pools": null,
  "qual": 2,
  "regOpen": false,
  "stage": 3,
- "teams": null
+ "teams": null,
+ "tie": "after"
 }

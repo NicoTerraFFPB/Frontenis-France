@@ -1,14 +1,20 @@
 {
  "createdAt": 4,
  "date": "10 et 11 juillet 2027",
+ "gf": "",
+ "gs": "",
+ "gw": "",
+ "kosets": false,
  "m": {},
  "maxTeams": 12,
- "name": "Étape 4",
+ "name": "OPEN BIARRITZ",
  "place": "Biarritz Fal",
+ "plan": null,
  "poolSize": 3,
  "pools": null,
  "qual": 2,
  "regOpen": false,
  "stage": 4,
- "teams": null
+ "teams": null,
+ "tie": "after"
 }
