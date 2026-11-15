@@ -324,6 +324,9 @@ h1.mega{font-size:clamp(46px,14.5vw,148px);line-height:.9;margin:8px 0 0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #v-intl a.comp{text-align:center;align-items:center}
 #v-intl a.comp .state{justify-items:center;width:100%}
+.sqnames{display:grid;gap:2px;margin:4px 0}
+.sqnames span{font-weight:600;color:var(--navy);overflow-wrap:anywhere}
+.sqnames small{font-size:13px;color:var(--muted)}
 .thumbs{display:flex;justify-content:center;gap:6px;margin:4px 0}
 .thumbs i{display:block;width:34px;height:42px;background:var(--soft) center/cover no-repeat;border:1px solid var(--line)}
 .admbar{background:var(--surface);border-left:4px solid var(--red);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
@@ -346,6 +349,43 @@ h1.mega{font-size:clamp(46px,14.5vw,148px);line-height:.9;margin:8px 0 0}
 .sq-ed .btn{width:100%}
 .fileb{position:relative;overflow:hidden;display:block;text-align:center}
 .fileb input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;font-size:0}
+
+.sq-fn{font-size:14px;color:var(--muted);letter-spacing:.04em}
+.sq-cr{display:block;font-size:12px;font-style:italic;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.cr-in{font-size:14px}
+.pdfbar label{display:grid;gap:3px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);width:90px}
+.pdfbar{justify-content:flex-start}
+.pdfbar span{flex:1 1 260px}
+.sq-ed .two{display:grid;gap:8px}
+.finalres{background:var(--surface);border-left:4px solid var(--red);padding:16px 18px;display:grid;gap:4px}
+.finalres .fr-k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--red)}
+.finalres b{font-family:var(--f-display);font-size:clamp(26px,5vw,38px);text-transform:uppercase;color:var(--navy);line-height:1.05}
+.parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:16px}
+.part{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--blue);display:flex;flex-direction:column;min-width:0}
+.pt-ph{aspect-ratio:4/5;background:var(--soft) center/cover no-repeat}
+.pt-b{display:flex;gap:12px;padding:14px;align-items:flex-start}
+.pt-b>div{display:grid;gap:3px;min-width:0}
+.pt-rank{font-family:var(--f-display);font-weight:700;font-size:30px;color:var(--red);min-width:42px}
+.pt-n{font-family:var(--f-display);font-size:20px;text-transform:uppercase;color:var(--navy);overflow-wrap:anywhere}
+.pt-res{font-weight:600;overflow-wrap:anywhere}
+.ic-row{grid-template-columns:96px minmax(0,1fr) auto}
+.ic-h small{display:block;font-family:var(--f-body,inherit);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ic-ed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px 4px 14px;border-bottom:1px solid var(--line);align-items:end}
+.ic-ed label{display:grid;gap:4px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:0}
+.ic-ed .wide{grid-column:1/-1}
+@media (max-width:560px){.ic-ed{grid-template-columns:minmax(0,1fr)}.ic-row{grid-template-columns:84px minmax(0,1fr)}.ic-row .pl-t{grid-column:2}}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px}
+.gal figure{margin:0;background:var(--surface);border:1px solid var(--line);min-width:0}
+.g-ph{aspect-ratio:4/3;background:var(--soft) center/cover no-repeat}
+.gal figcaption{padding:10px 12px;font-size:14px;display:grid;gap:2px}
+.gal .sq-ed{padding:10px 12px 14px}
+.addc2{grid-template-columns:repeat(3,minmax(0,1fr))}
+.addc2 .chk{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)}
+.addc2 .chk input{width:auto}
+.addc2 .wide2{grid-column:span 2}
+@media (max-width:820px){.addc2{grid-template-columns:minmax(0,1fr)}.addc2 .wide2{grid-column:auto}}
+.addc:has(#icType){grid-template-columns:2fr 2fr 1fr 2fr auto}
+@media (max-width:820px){.addc:has(#icType){grid-template-columns:minmax(0,1fr)}}
 #saisonTitle{font-size:clamp(34px,11vw,120px);white-space:nowrap}
 .logo{display:block;width:96px;height:96px;flex:none}
 .land-top{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
@@ -1435,9 +1475,42 @@ const intlAdmin=()=>isAdmin&&!demo&&!readonly&&!!db;
 const intlSeen=k=>k==="seniors"&&(intlCfg.seniors===true||intlAdmin());
 const SQ_SLOTS=["p1","p2","p3","p4","coach"];
 const intlList=()=>intl.filter(c=>(c.cat||"seniors")==="seniors").sort((a,b)=>(Number(b.year)||0)-(Number(a.year)||0)||(a.order||0)-(b.order||0));
-const sqFilled=c=>SQ_SLOTS.filter(k=>{const x=(c.team||{})[k];return x&&(x.n||x.ph)}).length;
+const isTour=c=>c.type==="tournoi";
+const pFull=x=>{x=x||{};const fn=(x.fn||"").trim(),ln=(x.ln||"").trim();return (fn||ln)?(fn+(fn&&ln?" ":"")+ln.toUpperCase()):(x.n||"")};
+const sqFilled=c=>SQ_SLOTS.filter(k=>{const x=(c.team||{})[k];return x&&(pFull(x)||x.ph)}).length;
+const intlName=c=>(c.name||"Compétition")+(c.year?" "+c.year:"")+(c.place?" - "+c.place:"");
 const PH_SVG='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.6-4.6 4-7 8.5-7s7.9 2.4 8.5 7z"/></svg>';
-function intlSave(c){const d={...c};delete d.id;return enqueue(()=>db.doc("intl/"+c.id).set(d))}
+const MAXDOC=900000;
+let intlForce=false;
+function intlSave(c){
+  const d={...c};delete d.id;
+  if(JSON.stringify(d).length>MAXDOC){toast("Trop de photos dans cette compétition : retirez-en une avant d'en ajouter.");return false}
+  intlPend[c.id]=(intlPend[c.id]||0)+1;
+  enqueue(async()=>{try{await db.doc("intl/"+c.id).set(d)}finally{setTimeout(()=>{intlPend[c.id]=Math.max(0,(intlPend[c.id]||1)-1)},4000)}});return true;
+}
+const intlPend={};
+function intlMerge(docs){
+  const old=intl,out=docs.map(d=>intlPend[d.id]>0?(old.find(o=>o.id===d.id)||d):d);
+  old.forEach(o=>{if(intlPend[o.id]>0&&!out.some(d=>d.id===o.id))out.push(o)});
+  return out;
+}
+let intlDirty=false,icSig="";
+const intlTyping=()=>{const ae=document.activeElement;return !!(ae&&ae.matches&&ae.matches("#icBody input:not([type=file]):not([type=checkbox]),#intlBody input:not([type=file]):not([type=checkbox])"))};
+function intlRerender(){if(intlTyping()||intlPicking){intlDirty=true;return}intlDirty=false;intlForce=true;try{render()}finally{intlForce=false}}
+document.addEventListener("focusout",()=>{if(intlDirty)setTimeout(()=>{if(intlDirty&&!intlTyping())intlRerender()},60)});
+let intlPicking=false;
+function intlPickEnd(){if(!intlPicking)return;intlPicking=false;if(intlDirty)intlRerender()}
+document.addEventListener("click",e=>{const x=e.target;if(x&&x.matches&&x.matches("#icBody input[type=file]"))intlPicking=true},true);
+document.addEventListener("cancel",e=>{const x=e.target;if(x&&x.matches&&x.matches("input[type=file]"))intlPickEnd()},true);
+window.addEventListener("focus",()=>{if(intlPicking)setTimeout(intlPickEnd,1500)});
+function intlTypingGuard(body){if(intlPicking&&!intlForce){intlDirty=true;return true}const ae=document.activeElement;return !intlForce&&ae&&body.contains(ae)&&ae.matches&&ae.matches("input:not([type=file]):not([type=checkbox]),textarea")}
+function fmtDay(d){if(!d)return "";const p=d.split("-");if(p.length!==3)return d;const dt=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));const s=dt.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long",timeZone:"UTC"});return s.charAt(0).toUpperCase()+s.slice(1)}
+function tAdd(hhmm,h){if(!hhmm||!/^\d\d:\d\d$/.test(hhmm)||h===""||h==null||isNaN(Number(h)))return "";let m=(Number(hhmm.slice(0,2))*60+Number(hhmm.slice(3))+Math.round(Number(h)*60))%1440;if(m<0)m+=1440;return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0")}
+function intlStateOf(c){
+  if(c.done)return {t:"Terminée"+(c.result?" · "+c.result:""),k:"done"};
+  if(isTour(c)){const n=(c.parts||[]).length;return {t:n?n+" participant"+(n>1?"s":"")+" français":"Participants à annoncer",k:n?"run":"soon"}}
+  const n=sqFilled(c);return {t:n?n+"/5 dans la sélection":"Sélection à annoncer",k:n?"run":"soon"};
+}
 function renderIntlCard(){
   const el=$("#intlSeniorsState");if(!el)return;
   if(intlCfg.seniors===true){el.textContent="Sélections et compétitions";el.className="st run"}
@@ -1453,13 +1526,14 @@ function renderIntl(k){
     body.innerHTML='<div class="empty"><b>Page en construction</b><span>'+(u?"Les résultats des compétitions internationales des moins de 22 ans seront centralisés ici.":"Les compétitions internationales séniors seront présentées ici.")+'</span></div>'+back;
     return;
   }
-  const ae=document.activeElement;if(ae&&body.contains(ae)&&ae.matches&&ae.matches("input"))return;
+  if(intlTypingGuard(body))return;
   const adm=intlAdmin(),pub=intlCfg.seniors===true;
   let h="";
   if(adm){
     h+='<div class="admbar"><span>'+(pub?'<b>Page visible par tous.</b>':'<b>Page masquée au public.</b> Seul vous la voyez pour le moment.')+'</span>'+
       (pub?'<button class="btn warn sm" data-intl="unpublish">'+(intlConfirm==="unpublish"?"Confirmer : masquer la page":"Masquer la page")+'</button>':'<button class="btn sm" data-intl="publish">'+(intlConfirm==="publish"?"Confirmer : rendre la page visible":"Rendre la page visible")+'</button>')+'</div>';
     h+='<section><h2>Ajouter une compétition</h2><div class="addc">'+
+      '<label>Type<select id="icType"><option value="selection">Sélection nationale (4 joueurs + sélectionneur)</option><option value="tournoi">Tournoi international (participants français)</option></select></label>'+
       '<label>Compétition<input id="icNew" type="text" placeholder="Coupe du Monde" autocomplete="off"></label>'+
       '<label>Année<input id="icYear" type="text" inputmode="numeric" placeholder="2026" maxlength="4" autocomplete="off"></label>'+
       '<label>Pays / lieu<input id="icPlace2" type="text" placeholder="Argentine" autocomplete="off"></label>'+
@@ -1469,13 +1543,18 @@ function renderIntl(k){
   h+='<section><h2>Les compétitions</h2>';
   if(!list.length)h+='<div class="empty"><b>Aucune compétition</b>'+(adm?"Ajoutez la première avec le formulaire ci-dessus.":"Les compétitions seront publiées ici.")+'</div>';
   else h+='<div class="choices">'+list.map(c=>{
-    const th=SQ_SLOTS.map(k=>{const x=(c.team||{})[k];return '<i'+(x&&x.ph?' style="background-image:url('+x.ph+')"':'')+'></i>'}).join("");
-    const n=sqFilled(c);
-    return '<a class="comp'+(list.indexOf(c)%3===1?" red":list.indexOf(c)%3===2?" green":"")+'" href="#international-seniors-'+esc(c.id)+'"><span class="kick">International</span><h3>'+esc(c.name||"Compétition")+(c.year?" "+esc(c.year):"")+'</h3><p>'+esc(c.place||"Lieu à définir")+'</p><div class="thumbs">'+th+'</div><div class="state"><span class="st '+(n?"run":"soon")+'">'+(n?n+"/5 dans la sélection":"Sélection à annoncer")+'</span></div><span class="go">Voir la sélection →</span></a>';
+    const tour=isTour(c);
+    const ini=x=>{x=x||{};const fn=(x.fn||"").trim(),ln=(x.ln||"").trim().toUpperCase();return ln?(fn?fn.charAt(0).toUpperCase()+".":"")+ln:(x.n||"")};
+    const pl=["p1","p2","p3","p4"].map(k=>ini((c.team||{})[k])).filter(Boolean),co=ini((c.team||{}).coach);
+    const th=tour||(!pl.length&&!co)?"":'<div class="sqnames">'+(pl.length?'<span>'+pl.map(esc).join(" · ")+'</span>':'')+(co?'<small>Sélectionneur : '+esc(co)+'</small>':'')+'</div>';
+    const s=intlStateOf(c);
+    return '<a class="comp'+(list.indexOf(c)%3===1?" red":list.indexOf(c)%3===2?" green":"")+'" href="#international-seniors-'+esc(c.id)+'"><span class="kick">'+(tour?"Tournoi international":"Sélection nationale")+'</span><h3>'+esc(c.name||"Compétition")+(c.year?" "+esc(c.year):"")+'</h3><p>'+esc(c.place||"Lieu à définir")+'</p>'+th+'<div class="state"><span class="st '+s.k+'">'+esc(s.t)+'</span></div><span class="go">'+(tour?"Voir les résultats →":"Voir la sélection →")+'</span></a>';
   }).join("")+'</div>';
   h+='</section>'+back;
   body.innerHTML=h;
 }
+function inp(attr,val,ph,extra){return '<input data-live '+attr+' type="text" placeholder="'+esc(ph)+'" value="'+esc(val||"")+'" autocomplete="off"'+(extra||"")+'>'}
+function photoCtl(attr,x){return '<label class="btn alt sm fileb">'+(x.ph?"Changer la photo":"Ajouter une photo")+'<input type="file" accept="image/*,application/pdf,.pdf" '+attr+'></label>'}
 function renderIntlComp(id){
   const c=intl.find(x=>x.id===id);
   const body=$("#icBody");
@@ -1484,60 +1563,175 @@ function renderIntlComp(id){
     $("#icTitle").textContent="Compétition";$("#icPlace").textContent="International";
     body.innerHTML='<div class="empty"><b>Page en construction</b><span>Cette compétition sera présentée ici.</span></div>'+back;return;
   }
-  const ae=document.activeElement;if(ae&&body.contains(ae)&&ae.matches&&ae.matches("input"))return;
-  const adm=intlAdmin();
+  if(intlTypingGuard(body))return;
+  const adm=intlAdmin(),tour=isTour(c);
+  const sig=JSON.stringify([id,c,adm,intlConfirm]);if(!intlForce&&sig===icSig&&body.firstChild)return;icSig=sig;
   $("#icTitle").textContent=(c.name||"Compétition")+(c.year?" "+c.year:"");
-  $("#icPlace").textContent=c.place||"Compétitions internationales séniors";
-  const team=c.team||{};
-  let h='<section><h2>La sélection</h2><div class="squad">'+SQ_SLOTS.map((k,i)=>{
-    const x=team[k]||{},coach=k==="coach";
-    const ph='<div class="sq-ph"'+(x.ph?' style="background-image:url('+x.ph+')" role="img" aria-label="Photo de '+esc(x.n||"")+'"':'')+'>'+(x.ph?"":PH_SVG)+'</div>';
-    const info='<div class="sq-b">'+(coach?'<span class="sq-role">Sélectionneur</span>':'')+'<span class="sq-n">'+esc(x.n||(adm?"Nom à saisir":"À annoncer"))+'</span><span class="sq-c">'+esc(x.c||"")+'</span></div>';
-    let ed="";
-    if(adm)ed='<div class="sq-ed"><input data-live data-intl-f="n" data-slot="'+k+'" type="text" placeholder="'+(coach?"Nom du sélectionneur":"Nom du joueur")+'" value="'+esc(x.n||"")+'" autocomplete="off"><input data-live data-intl-f="c" data-slot="'+k+'" type="text" placeholder="Club" value="'+esc(x.c||"")+'" autocomplete="off"><label class="btn alt sm fileb">'+(x.ph?"Changer la photo":"Ajouter une photo")+'<input type="file" accept="image/*" data-intl-photo="'+k+'"></label>'+(x.ph?'<button class="btn warn sm" data-intl="rmphoto" data-slot="'+k+'">Retirer la photo</button>':'')+'</div>';
-    return '<article class="sq'+(coach?" coach":"")+'">'+ph+info+ed+'</article>';
-  }).join("")+'</div></section>';
+  $("#icPlace").textContent=(c.place||"Compétitions internationales séniors")+(c.done?" · Terminée":"");
+  const cr=(x,a)=>adm?'<input data-live '+a+' class="cr-in" type="text" placeholder="Photo : crédit (ex. FFPB)" value="'+esc(x.cr||"")+'" autocomplete="off">':(x.cr?'<span class="sq-cr">Photo : '+esc(x.cr)+'</span>':'');
+  let h="";
+  /* résultat final */
+  if(c.done||adm){
+    h+='<section><h2>Résultat final</h2>'+(c.done?'<div class="finalres"><span class="fr-k">Terminée</span><b>'+esc(c.result||"Résultat à saisir")+'</b></div>':'<div class="empty"><b>Compétition en cours ou à venir</b>Cochez « Compétition terminée » plus bas pour saisir le résultat final.</div>')+'</section>';
+  }
+  if(adm)h+='<div class="admbar pdfbar"><span><b>Photo depuis un PDF :</b> choisissez « Ajouter une photo » puis votre PDF. L\'appli prend la photo contenue dans le PDF.</span><label>Page<input type="number" min="1" value="'+pdfPage+'" data-pdfopt="page"></label><label>Photo n°<input type="number" min="1" value="'+pdfNth+'" data-pdfopt="nth"></label></div>';
+  /* sélection */
+  if(!tour){
+    h+='<section><h2>La sélection</h2><div class="squad">'+SQ_SLOTS.map(k=>{
+      const x=(c.team||{})[k]||{},coach=k==="coach",nm=pFull(x);
+      const ph='<div class="sq-ph"'+(x.ph?' style="background-image:url('+x.ph+')" role="img" aria-label="Photo de '+esc(nm)+'"':'')+'>'+(x.ph?"":PH_SVG)+'</div>';
+      const fn=(x.fn||"").trim(),ln=(x.ln||"").trim();
+      const nameHtml=(fn||ln)?(fn?'<span class="sq-fn">'+esc(fn)+'</span>':'')+'<span class="sq-n">'+esc(ln.toUpperCase())+'</span>':(x.n?'<span class="sq-n">'+esc(x.n)+'</span>':'<span class="sq-n">'+(adm?"Nom à saisir":"À annoncer")+'</span>');
+      const info='<div class="sq-b">'+(coach?'<span class="sq-role">Sélectionneur</span>':'')+nameHtml+'<span class="sq-c">'+esc(x.c||"")+'</span>'+(adm?'':cr(x,''))+'</div>';
+      let ed="";
+      if(adm)ed='<div class="sq-ed">'+inp('data-intl-f="fn" data-slot="'+k+'"',x.fn||(x.n&&!x.ln?x.n:""),"Prénom")+inp('data-intl-f="ln" data-slot="'+k+'"',x.ln,"NOM")+inp('data-intl-f="c" data-slot="'+k+'"',x.c,"Club")+cr(x,'data-intl-f="cr" data-slot="'+k+'"')+photoCtl('data-intl-photo="'+k+'"',x)+(x.ph?'<button class="btn warn sm" data-intl="rmphoto" data-slot="'+k+'">Retirer la photo</button>':'')+'</div>';
+      return '<article class="sq'+(coach?" coach":"")+'">'+ph+info+ed+'</article>';
+    }).join("")+'</div></section>';
+  }else{
+    const parts=(c.parts||[]).slice().sort((a,b)=>(Number(a.rank)||999)-(Number(b.rank)||999));
+    h+='<section><h2>Participants français</h2>';
+    if(!parts.length)h+='<div class="empty"><b>Aucun participant</b>'+(adm?"Ajoutez une équipe ou un joueur ci-dessous.":"Les participants français seront présentés ici.")+'</div>';
+    else h+='<div class="parts">'+parts.map(p=>{
+      const ph=p.ph?'<div class="pt-ph" style="background-image:url('+p.ph+')" role="img" aria-label="Photo de '+esc(p.name||"")+'"></div>':'';
+      const view='<div class="pt-b"><span class="pt-rank">'+(p.rank?esc(p.rank):"–")+'</span><div><b class="pt-n">'+esc(p.name||"Participant")+'</b><span class="sq-c">'+esc(p.c||"")+'</span>'+(p.res?'<span class="pt-res">'+esc(p.res)+'</span>':'')+(adm?'':cr(p,''))+'</div></div>';
+      const ed=adm?'<div class="sq-ed">'+inp('data-intl-p="name" data-pid="'+esc(p.id)+'"',p.name,"Équipe ou joueur(s)")+inp('data-intl-p="c" data-pid="'+esc(p.id)+'"',p.c,"Club")+'<div class="two">'+inp('data-intl-p="rank" data-pid="'+esc(p.id)+'"',p.rank,"Place finale (ex. 3e)")+inp('data-intl-p="res" data-pid="'+esc(p.id)+'"',p.res,"Résultat (ex. perd en demi-finale)")+'</div>'+cr(p,'data-intl-p="cr" data-pid="'+esc(p.id)+'"')+photoCtl('data-intl-pphoto="'+esc(p.id)+'"',p)+(p.ph?'<button class="btn warn sm" data-intl="rmpphoto" data-pid="'+esc(p.id)+'">Retirer la photo</button>':'')+'<button class="btn warn sm" data-intl="rmpart" data-pid="'+esc(p.id)+'">Supprimer ce participant</button></div>':'';
+      return '<article class="part">'+ph+view+ed+'</article>';
+    }).join("")+'</div>';
+    if(adm)h+='<div style="margin-top:14px"><button class="btn" data-intl="addpart">Ajouter un participant</button></div>';
+    h+='</section>';
+  }
+  /* planning */
+  const ms=(c.matches||[]).slice().sort((a,b)=>((a.d||"9999")+(a.hf||a.hl||"99:99")).localeCompare((b.d||"9999")+(b.hf||b.hl||"99:99")));
+  if(ms.length||adm){
+    h+='<section><h2>Planning des parties</h2>';
+    if(!ms.length)h+='<div class="empty"><b>Planning à venir</b>'+(adm?"Ajoutez une partie ci-dessous.":"Les horaires seront publiés ici.")+'</div>';
+    else{
+      const days=[];ms.forEach(m=>{const d=m.d||"";let g=days.find(x=>x.d===d);if(!g){g={d,l:[]};days.push(g)}g.l.push(m)});
+      h+=days.map(g=>'<div class="pl-day"><h3>'+(g.d?esc(fmtDay(g.d)):"Date à venir")+'</h3>'+g.l.map(m=>{
+        const tm=(m.hf||m.hl)?'<div class="pl-h ic-h">'+esc(m.hf||"—")+'<small>heure France</small>'+(m.hl?'<small>'+esc(m.hl)+' locale</small>':'')+'</div>':'<div class="pl-h ic-h">—</div>';
+        const view='<div class="pl-row ic-row">'+tm+'<div class="pl-m"><b>'+esc(m.lbl||"Partie")+'</b></div><div class="pl-t"><span class="pl-sc">'+esc(m.sc||"")+'</span></div></div>';
+        const ed=adm?'<div class="ic-ed"><label>Date<input data-live data-intl-mt="d" data-mid="'+esc(m.id)+'" type="date" value="'+esc(m.d||"")+'"></label><label>Heure locale<input data-live data-intl-mt="hl" data-mid="'+esc(m.id)+'" type="time" value="'+esc(m.hl||"")+'"></label><label>Heure France<input data-live data-intl-mt="hf" data-mid="'+esc(m.id)+'" type="time" value="'+esc(m.hf||"")+'"></label><label class="wide">Partie<input data-live data-intl-mt="lbl" data-mid="'+esc(m.id)+'" type="text" placeholder="France - Mexique (poule)" value="'+esc(m.lbl||"")+'" autocomplete="off"></label><label>Score<input data-live data-intl-mt="sc" data-mid="'+esc(m.id)+'" type="text" placeholder="2-0 (15-9, 15-12)" value="'+esc(m.sc||"")+'" autocomplete="off"></label><button class="btn warn sm" data-intl="rmmatch" data-mid="'+esc(m.id)+'">Supprimer</button></div>':'';
+        return view+ed;
+      }).join("")+'</div>').join("");
+    }
+    if(adm)h+='<div style="margin-top:14px"><button class="btn" data-intl="addmatch">Ajouter une partie</button></div>';
+    h+='</section>';
+  }
+  /* galerie */
+  const gal=c.gallery||[];
+  if(gal.length||adm){
+    h+='<section><h2>Photos</h2>';
+    if(!gal.length)h+='<div class="empty"><b>Aucune photo</b>Ajoutez quelques photos de la compétition ci-dessous.</div>';
+    else h+='<div class="gal">'+gal.map(g=>'<figure><div class="g-ph" style="background-image:url('+g.ph+')" role="img" aria-label="'+esc(g.cap||"Photo")+'"></div>'+(adm?'<div class="sq-ed">'+inp('data-intl-g="cap" data-gid="'+esc(g.id)+'"',g.cap,"Légende")+cr(g,'data-intl-g="cr" data-gid="'+esc(g.id)+'"')+'<button class="btn warn sm" data-intl="rmgal" data-gid="'+esc(g.id)+'">Retirer</button></div>':'<figcaption>'+(g.cap?esc(g.cap):"")+(g.cr?'<span class="sq-cr">Photo : '+esc(g.cr)+'</span>':'')+'</figcaption>')+'</figure>').join("")+'</div>';
+    if(adm)h+='<div style="margin-top:14px"><label class="btn alt fileb" style="display:inline-block;padding:10px 18px">Ajouter une photo<input type="file" accept="image/*,application/pdf,.pdf" data-intl-gal="1"></label></div>';
+    h+='</section>';
+  }
+  /* réglages */
   if(adm){
-    h+='<section><h2>Modifier la compétition</h2><div class="addc">'+
+    h+='<section><h2>Modifier la compétition</h2><div class="addc addc2">'+
       '<label>Compétition<input data-live data-intl-m="name" type="text" value="'+esc(c.name||"")+'" autocomplete="off"></label>'+
       '<label>Année<input data-live data-intl-m="year" type="text" inputmode="numeric" maxlength="4" value="'+esc(c.year||"")+'" autocomplete="off"></label>'+
       '<label>Pays / lieu<input data-live data-intl-m="place" type="text" value="'+esc(c.place||"")+'" autocomplete="off"></label>'+
-      '<button class="btn warn" data-intl="del">'+(intlConfirm==="del"?"Confirmer la suppression":"Supprimer")+'</button></div></section>';
+      '<label>Décalage heure locale → France (h)<input data-live data-intl-m="off" type="text" inputmode="decimal" placeholder="ex. +4 (Argentine)" value="'+esc(c.off==null?"":c.off)+'" autocomplete="off"></label>'+
+      '<label class="chk"><input type="checkbox" data-intl-done="1"'+(c.done?" checked":"")+'> Compétition terminée</label>'+
+      (c.done?'<label class="wide2">Résultat final<input data-live data-intl-m="result" type="text" placeholder="'+(tour?"ex. Vainqueur : équipe de France":"ex. 4e place")+'" value="'+esc(c.result||"")+'" autocomplete="off"></label>':'')+
+      '<button class="btn warn" data-intl="del">'+(intlConfirm==="del"?"Confirmer la suppression":"Supprimer la compétition")+'</button></div><p class="note" style="margin-top:10px">Le décalage sert à calculer l\'heure France quand vous saisissez l\'heure locale (valeur positive : la France est en avance sur le lieu, ex. +4 pour l\'Argentine en hiver). Vous pouvez toujours corriger l\'heure France à la main.</p></section>';
   }
   h+=back;
   body.innerHTML=h;
 }
-function cropPhoto(file){
-  return new Promise((res,rej)=>{
-    const url=URL.createObjectURL(file),im=new Image();
-    im.onload=()=>{try{
-      const W=360,H=450,ar=W/H;let sx=0,sy=0,sw=im.width,sh=im.height;
-      if(sw/sh>ar){const nw=sh*ar;sx=(sw-nw)/2;sw=nw}else{const nh=sw/ar;sy=(sh-nh)*0.15;sh=nh}
-      const cv=document.createElement("canvas");cv.width=W;cv.height=H;
-      cv.getContext("2d").drawImage(im,sx,sy,sw,sh,0,0,W,H);
-      URL.revokeObjectURL(url);res(cv.toDataURL("image/jpeg",0.82));
+let PDFJS=null;
+function addScript(src){return new Promise((res,rej)=>{const sc=document.createElement("script");sc.src=src;sc.onload=res;sc.onerror=()=>rej(new Error("chargement du lecteur PDF impossible"));document.head.appendChild(sc)})}
+function loadPdfjs(){return PDFJS||(PDFJS=(async()=>{
+  const B="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+  if(!window.pdfjsLib)await addScript(B+"pdf.min.js");
+  if(!(window.pdfjsWorker&&window.pdfjsWorker.WorkerMessageHandler))await addScript(B+"pdf.worker.min.js");
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc=B+"pdf.worker.min.js";
+  return window.pdfjsLib;
+})().catch(e=>{PDFJS=null;throw e}))}
+let pdfPage=1,pdfNth=1;
+async function pdfImage(file){
+  const lib=await loadPdfjs();
+  const doc=await lib.getDocument({data:await file.arrayBuffer()}).promise;
+  const page=await doc.getPage(Math.min(Math.max(1,pdfPage|0||1),doc.numPages));
+  const cv=document.createElement("canvas");
+  try{
+    const ops=await page.getOperatorList(),O=lib.OPS,names=[];
+    ops.fnArray.forEach((f,i)=>{if(f===O.paintImageXObject||f===O.paintJpegXObject)names.push(ops.argsArray[i][0])});
+    const imgs=[];
+    for(const n of names){
+      const im=await Promise.race([new Promise(r=>{try{page.objs.get(n,r)}catch(e){r(null)}}),new Promise(r=>setTimeout(()=>r(null),4000))]);
+      if(im&&im.width>=120&&im.height>=120&&(im.bitmap||(im.data&&(im.kind===2||im.kind===3))))imgs.push(im);
+    }
+    const pk=imgs[Math.min(Math.max(1,pdfNth|0||1)-1,imgs.length-1)];
+    if(pk){
+      cv.width=pk.width;cv.height=pk.height;const g=cv.getContext("2d");
+      if(pk.bitmap)g.drawImage(pk.bitmap,0,0);
+      else{const id=g.createImageData(pk.width,pk.height),n=pk.width*pk.height;
+        if(pk.kind===3)id.data.set(pk.data.subarray?pk.data.subarray(0,n*4):pk.data);
+        else for(let i=0,j=0,k=0;i<n;i++){id.data[k++]=pk.data[j++];id.data[k++]=pk.data[j++];id.data[k++]=pk.data[j++];id.data[k++]=255}
+        g.putImageData(id,0,0)}
+      return cv;
+    }
+  }catch(e){}
+  const vp=page.getViewport({scale:2});cv.width=vp.width;cv.height=vp.height;
+  const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cv.width,cv.height);
+  await page.render({canvasContext:g,viewport:vp}).promise;return cv;
+}
+const isPdf=f=>f&&(f.type==="application/pdf"||/\.pdf$/i.test(f.name||""));
+function cropPhoto(file,W,H){
+  return new Promise(async(res,rej)=>{
+    let url=null,im;
+    const go=()=>{try{
+      const iw=im.width,ih=im.height;let sx=0,sy=0,sw=iw,sh=ih,cw,ch;
+      if(W&&H){cw=W;ch=H;const ar=W/H;if(sw/sh>ar){const nw=sh*ar;sx=(sw-nw)/2;sw=nw}else{const nh=sw/ar;sy=(sh-nh)*0.15;sh=nh}}
+      else{const mx=900,k=Math.min(1,mx/Math.max(sw,sh));cw=Math.round(sw*k);ch=Math.round(sh*k)}
+      const cv=document.createElement("canvas");cv.width=cw;cv.height=ch;
+      const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cw,ch);g.drawImage(im,sx,sy,sw,sh,0,0,cw,ch);
+      if(url)URL.revokeObjectURL(url);res(cv.toDataURL("image/jpeg",W?0.82:0.74));
     }catch(e){rej(e)}};
-    im.onerror=()=>{URL.revokeObjectURL(url);rej(new Error("format"))};
+    if(isPdf(file)){try{im=await Promise.race([pdfImage(file),new Promise((_,r)=>setTimeout(()=>r(new Error("délai dépassé")),25000))]);go()}catch(e){rej(e)}return}
+    url=URL.createObjectURL(file);im=new Image();
+    im.onload=go;im.onerror=()=>{URL.revokeObjectURL(url);rej(new Error("format"))};
     im.src=url;
   });
 }
+const newId=p=>p+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+document.addEventListener("input",e=>{const x=e.target;if(x&&x.matches&&x.matches("[data-pdfopt]")){const v=Math.max(1,parseInt(x.value,10)||1);if(x.dataset.pdfopt==="page")pdfPage=v;else pdfNth=v}});
 document.addEventListener("change",async e=>{
   const x=e.target;if(!x||!x.matches||!intlAdmin())return;
   const rt=parseHash();if(rt.v!=="intlc")return;
   const c=intl.find(q=>q.id===rt.id);if(!c)return;
-  if(x.matches("[data-intl-photo]")){
-    const f=x.files&&x.files[0];if(!f)return;
-    const slot=x.dataset.intlPhoto;
-    try{const d=await cropPhoto(f);c.team=c.team||{};c.team[slot]={...(c.team[slot]||{}),ph:d};intlSave(c);render();toast("Photo enregistrée.")}
-    catch(err){toast("Cette image n'a pas pu être lue. Essayez un fichier JPG ou PNG.")}
-    return;
+  const done=()=>{intlSave(c);intlRerender()},soft=()=>{intlSave(c);intlDirty=true;icSig=JSON.stringify([c.id,c,intlAdmin(),intlConfirm])};
+  if(x.matches("[data-intl-photo],[data-intl-pphoto],[data-intl-gal]")){
+    const f=x.files&&x.files[0];if(!f){intlPickEnd();return}
+    const bk=JSON.stringify(c);toast(isPdf(f)?"Lecture du PDF…":"Traitement de la photo…");
+    try{
+      if(x.matches("[data-intl-photo]")){const s=x.dataset.intlPhoto,d=await cropPhoto(f,360,450);c.team=c.team||{};c.team[s]={...(c.team[s]||{}),ph:d}}
+      else if(x.matches("[data-intl-pphoto]")){const p=(c.parts||[]).find(q=>q.id===x.dataset.intlPphoto);if(!p)return;p.ph=await cropPhoto(f,360,450)}
+      else{c.gallery=c.gallery||[];if(c.gallery.length>=8){toast("8 photos maximum par compétition.");return}c.gallery.push({id:newId("g"),ph:await cropPhoto(f)})}
+      intlPicking=false;if(intlSave(c)){intlRerender();toast("Photo enregistrée.")}else{const o=JSON.parse(bk);Object.keys(c).forEach(k=>delete c[k]);Object.assign(c,o);intlRerender()}
+    }catch(err){console.error(err);intlPicking=false;toast(isPdf(f)?"Ce PDF n'a pas pu être lu ("+((err&&err.message)||"erreur")+"). Essayez un fichier JPG/PNG ou une capture d'écran de la photo.":"Cette image n'a pas pu être lue. Essayez un fichier JPG ou PNG.")}
+    intlPicking=false;x.value="";if(intlDirty)intlRerender();return;
   }
+  if(x.matches("[data-intl-done]")){c.done=x.checked;done();return}
   if(x.matches("[data-intl-f]")){
-    const slot=x.dataset.slot,f=x.dataset.intlF;c.team=c.team||{};
-    c.team[slot]={...(c.team[slot]||{}),[f]:x.value.trim()};intlSave(c);render();return;
+    const s=x.dataset.slot,f=x.dataset.intlF;c.team=c.team||{};const cur={...(c.team[s]||{})};
+    let v=x.value.trim();if(f==="ln")v=v.toUpperCase();
+    cur[f]=v;if((f==="fn"||f==="ln")&&cur.n)delete cur.n;c.team[s]=cur;x.value=v;soft();return;
+  }
+  if(x.matches("[data-intl-p]")){const p=(c.parts||[]).find(q=>q.id===x.dataset.pid);if(p){p[x.dataset.intlP]=x.value.trim();soft()}return}
+  if(x.matches("[data-intl-g]")){const g=(c.gallery||[]).find(q=>q.id===x.dataset.gid);if(g){g[x.dataset.intlG]=x.value.trim();soft()}return}
+  if(x.matches("[data-intl-mt]")){
+    const m=(c.matches||[]).find(q=>q.id===x.dataset.mid);if(!m)return;
+    const f=x.dataset.intlMt;m[f]=x.value.trim();
+    if(f==="hl"&&m.hl&&!m.hf&&c.off!=null&&c.off!==""){m.hf=tAdd(m.hl,c.off);const hfi=document.querySelector('[data-intl-mt="hf"][data-mid="'+m.id+'"]');if(hfi)hfi.value=m.hf}
+    soft();return;
   }
   if(x.matches("[data-intl-m]")){
-    c[x.dataset.intlM]=x.value.trim();intlSave(c);render();
+    const f=x.dataset.intlM;let v=x.value.trim();
+    if(f==="off"){v=v.replace(",",".").replace("+","");c.off=v===""||isNaN(Number(v))?null:Number(v)}else c[f]=v;
+    soft();
   }
 });
 document.addEventListener("click",e=>{
@@ -1549,14 +1743,21 @@ document.addEventListener("click",e=>{
     toast(v?"La page est maintenant visible par tous (après la prochaine mise à jour du site).":"La page est masquée au public.");return;
   }
   if(a==="add"){
-    const n=($("#icNew").value||"").trim(),y=($("#icYear").value||"").trim(),pl=($("#icPlace2").value||"").trim();
+    const n=($("#icNew").value||"").trim(),y=($("#icYear").value||"").trim(),pl=($("#icPlace2").value||"").trim(),ty=$("#icType").value==="tournoi"?"tournoi":"selection";
     if(!n){toast("Saisissez le nom de la compétition.");return}
     const id="s"+Date.now().toString(36);
-    const c={id,cat:"seniors",name:n,year:y,place:pl,order:Date.now(),team:{}};
+    const c={id,cat:"seniors",type:ty,name:n,year:y,place:pl,order:Date.now(),team:{},parts:[],matches:[],gallery:[],done:false,result:""};
     intl.push(c);intlSave(c);location.hash="international-seniors-"+id;toast("Compétition ajoutée.");return;
   }
   const c=rt.v==="intlc"?intl.find(q=>q.id===rt.id):null;if(!c)return;
-  if(a==="rmphoto"){const s=b.dataset.slot;if(c.team&&c.team[s]){delete c.team[s].ph;intlSave(c);render()}return}
+  const done=()=>{intlSave(c);intlRerender()};
+  if(a==="rmphoto"){const s=b.dataset.slot;if(c.team&&c.team[s]){delete c.team[s].ph;done()}return}
+  if(a==="rmpphoto"){const p=(c.parts||[]).find(q=>q.id===b.dataset.pid);if(p){delete p.ph;done()}return}
+  if(a==="rmpart"){c.parts=(c.parts||[]).filter(q=>q.id!==b.dataset.pid);done();return}
+  if(a==="addpart"){c.parts=c.parts||[];c.parts.push({id:newId("p"),name:"",c:"",rank:"",res:""});done();return}
+  if(a==="rmgal"){c.gallery=(c.gallery||[]).filter(q=>q.id!==b.dataset.gid);done();return}
+  if(a==="addmatch"){c.matches=c.matches||[];c.matches.push({id:newId("m"),d:"",hl:"",hf:"",lbl:"",sc:""});done();return}
+  if(a==="rmmatch"){c.matches=(c.matches||[]).filter(q=>q.id!==b.dataset.mid);done();return}
   if(a==="del"){
     if(intlConfirm!=="del"){intlConfirm="del";render();setTimeout(()=>{if(intlConfirm==="del"){intlConfirm="";render()}},5000);return}
     intlConfirm="";intl=intl.filter(q=>q.id!==c.id);enqueue(()=>db.doc("intl/"+c.id).delete());location.hash="international-seniors";toast("Compétition supprimée.");
@@ -1670,7 +1871,8 @@ function renderPools(t,pb){
   let h='<h2>Poules</h2><div class="pools">'+t.pools.map((p,pi)=>{
     const st=standings(t,pi);
     const rows=st.map((r,i)=>'<tr><td class="'+(i<t.qual?"q":"c")+'">'+(i+1)+'</td><td class="team-c">'+esc(teamName(t,pb,r.id))+'</td><td>'+r.j+'</td><td>'+r.w+'</td><td>'+(r.pf-r.pa>0?"+":"")+(r.pf-r.pa)+'</td><td>'+(r.j?((r.pf-r.pa)/r.j>0?"+":"")+((r.pf-r.pa)/r.j).toFixed(1).replace(".",","):"–")+'</td></tr>').join("");
-    const ms=poolMatches(pi,p.ids).map(m=>matchRow(t,pb,m)).join("");
+    const plan0=t.plan||{},dix=m=>{const e=plan0[m.key];return e&&e.j&&e.h?DAYS.indexOf(e.j)*10000+(Number(e.h.slice(0,2))*60+Number(e.h.slice(3))):1e9};
+    const ms=poolMatches(pi,p.ids).map((m,i)=>({m,i})).sort((x,y)=>dix(x.m)-dix(y.m)||x.i-y.i).map(x=>matchRow(t,pb,x.m)).join("");
     return '<article class="pool"><header><h3>Poule '+String.fromCharCode(65+pi)+'</h3><span>'+p.ids.length+' équipes</span></header><div class="scroll"><table class="left"><thead><tr><th>#</th><th>Équipe</th><th>J</th><th>V</th><th>Goal avg</th><th title="Goal average moyen : différence de points divisée par le nombre de parties jouées">GA moy.</th></tr></thead><tbody>'+rows+'</tbody></table></div><div class="matches"><h4>Matchs</h4>'+ms+'</div></article>';
   }).join("")+'</div>';
   h+='<p class="note" style="margin-top:12px">Une partie se joue en 1 manche de 20 points. Classement dans la poule : victoires, puis goal average. Pour comparer des équipes de poules de tailles différentes (poule de 3 contre poule de 4), on utilise le taux de victoires (victoires ÷ parties jouées), puis le goal average moyen « GA moy. » (différence de points ÷ parties jouées). Barre jaune : qualifiés pour le tableau principal. Barre grise : tableau consolant.'+(done?"":" Poules en cours.")+'</p>';
@@ -2116,7 +2318,7 @@ async function start(){
   db.collection("players").onSnapshot(s=>{players=s.docs.map(d=>{const x=d.data();const first=x.first||"";return {id:d.id,first,last:x.last||(first?"":x.name||""),name:((first+" "+(x.last||"")).trim())||x.name||""}});done("players");render();showTab()},fail("players"));
   db.collection("entries").onSnapshot(s=>{entries=s.docs.map(d=>({id:d.id,...d.data()}));done("entries");render()},fail("entries"));
   if(isAdmin)db.collection("birth").onSnapshot(s=>{births={};s.docs.forEach(d=>{births[d.id]=d.data().d});render()},()=>{});
-  db.collection("intl").onSnapshot(s=>{intl=s.docs.map(d=>({...d.data(),id:d.id}));render()},()=>{});
+  db.collection("intl").onSnapshot(s=>{intl=intlMerge(s.docs.map(d=>({...JSON.parse(JSON.stringify(d.data()||{})),id:d.id})));render()},()=>{});
   db.collection("intlcfg").onSnapshot(s=>{intlCfg={};s.docs.forEach(d=>{intlCfg[d.id]=!!(d.data()||{}).public});render()},()=>{});
   db.collection("nat").onSnapshot(s=>{const d=s.docs.find(x=>x.id==="a");natA=normNat(d?d.data():null);render()},()=>{});
   db.collection("tournaments").onSnapshot(s=>{tournaments=s.docs.map(d=>{const x=d.data();return {...DEFAULTS,...x,id:d.id,m:x.m?{...x.m}:{},plan:x.plan?{...x.plan}:null}});done("tournaments");render();showTab()},fail("tournaments"));
