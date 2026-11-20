@@ -106,6 +106,15 @@ tj=json.dumps(load('tournaments'),ensure_ascii=False)
 for old,new in idmap.items(): tj=tj.replace(old,new)
 nat=json.load(open(S+'nat/a.json',encoding='utf-8')); nat=nat.get('data',nat)
 now=datetime.datetime.now(ZoneInfo('Europe/Paris')).replace(microsecond=0)
+# âge des joueurs : calculé depuis la collection privée « birth » (si elle a été récupérée) ; la date elle-même n'est jamais publiée
+for b in (load('birth') if os.path.isdir(S+'birth') else []):
+    try:
+        y,m,d=[int(x) for x in str(b.get('d',''))[:10].split('-')]
+        age=now.year-y-((now.month,now.day)<(m,d))
+        if 5<=age<100:
+            for p in players:
+                if p.get('id')==b['id']: p['age']=age
+    except Exception: pass
 snap={"at":now.isoformat(),"players":players,"entries":entries,"tournaments":json.loads(tj),"nat":{"teams":nat.get('teams',{}),"days":nat.get('days',[]),"res":nat.get('res',{}),"fin":nat.get('fin',{})}}
 cfg={}
 for c in load('intlcfg'): cfg[c['id']]=bool(c.get('public'))
