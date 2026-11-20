@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17305A"/><stop offset="1" stop-color="#0B1A33"/></linearGradient>
+<radialGradient id="gl" cx=".5" cy=".38" r=".55"><stop offset="0" stop-color="#3B63B0" stop-opacity=".35"/><stop offset="1" stop-color="#3B63B0" stop-opacity="0"/></radialGradient></defs>
+<rect width="1024" height="1024" fill="url(#bg)"/><rect width="1024" height="1024" fill="url(#gl)"/><g transform="translate(274.5,190) scale(2.5)"><g fill="none" stroke-linejoin="round">
+<polygon points="0,124 190,124 168,79.5 82,79.5" fill="#18305A"/>
+<g stroke="#7186A8" stroke-width="2.0999999999999996"><line x1="78" y1="87.75" x2="172" y2="87.75"/><line x1="56" y1="100" x2="178" y2="100"/><line x1="28" y1="114" x2="185" y2="114"/><line x1="82" y1="69" x2="168" y2="69"/></g>
+<polygon points="0,0 82,22 82,79.5 0,124" fill="#28468A" stroke="#EEF2F8" stroke-width="3"/>
+<rect x="82" y="22" width="86" height="57.5" stroke="#EEF2F8" stroke-width="3"/>
+<polyline points="82,79.5 0,124 190,124 168,79.5" stroke="#EEF2F8" stroke-width="3"/>
+<path d="M127.5 44 Q148 70 155.75 112.75" stroke="#FF5F57" stroke-width="3.4499999999999997" stroke-dasharray="0.1 7.800000000000001" stroke-linecap="round"/>
+<circle cx="127.5" cy="41" r="3.2" stroke="#FF5F57" stroke-width="2.7"/>
+<circle cx="155.75" cy="112.75" r="5.2" fill="#FF5F57"/>
+</g></g><text x="512" y="700" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="200" fill="#fff" letter-spacing="6">FRONTENIS</text><rect x="282" y="738" width="153.33333333333334" height="22" fill="#1F5BD6"/><rect x="435.33333333333337" y="738" width="153.33333333333334" height="22" fill="#fff"/><rect x="588.6666666666667" y="738" width="153.33333333333334" height="22" fill="#F0453A"/></svg>
