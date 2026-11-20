@@ -9,10 +9,35 @@ STARTUP='<link rel="apple-touch-startup-image" media="(device-width: 440px) and 
 APP_JS=r"""<script>(function(){
 var d=document.documentElement,sa=false;try{sa=navigator.standalone===true||matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: fullscreen)").matches}catch(e){}
 if(sa)d.classList.add("pwa");
-var tag=null,busy=false,hidAt=0,pill=null,LIVE=/^#(jour-j|nat-a)/;
+var tag=null,busy=false,hidAt=0,pill=null,LIVE=/^#(jour-j|nat-a)/,T0=document.title;
+try{if(navigator.clearAppBadge)navigator.clearAppBadge().catch(function(){})}catch(e){}
+/* retour à la même place après une mise à jour */
+try{var sv=JSON.parse(sessionStorage.getItem("ff-maj")||"null");sessionStorage.removeItem("ff-maj");
+  if(sv&&sv.h===location.hash&&sv.y>0)window.addEventListener("load",function(){setTimeout(function(){window.scrollTo(0,sv.y)},700)})}catch(e){}
 function snapAt(t){var m=/"at":\s*"([^"]+)"/.exec(t||"");return m?m[1]:""}
 function curAt(){var e=document.getElementById("snap");return e?snapAt(e.textContent.slice(0,200)):""}
-function show(){if(pill)return;pill=document.createElement("button");pill.type="button";pill.className="ff-maj";pill.innerHTML='<span></span>Nouveaux résultats · <b>Mettre à jour</b>';pill.onclick=function(){location.reload()};document.body.appendChild(pill)}
+function reload(){try{sessionStorage.setItem("ff-maj",JSON.stringify({h:location.hash,y:window.scrollY||0}))}catch(e){}location.reload()}
+function ok(r){return !!r&&r.a!=null&&r.b!=null&&r.a!==""&&r.b!==""&&Number(r.a)!==Number(r.b)&&(!r.sets||r.done)}
+/* ce qui a changé entre la page affichée et la nouvelle : nouveaux scores */
+function diff(o,n){
+  var out={n:0,lab:""},P={};(n.players||[]).forEach(function(p){P[p.id]=p});
+  var nm=function(id){var p=P[id];return p?(p.last||p.name||""):""};
+  var team=function(t,id){var x=t.teams&&t.teams[id];return x?nm(x.p1)+"/"+nm(x.p2):""};
+  var ot={};(o.tournaments||[]).forEach(function(t){ot[t.id]=t});
+  (n.tournaments||[]).forEach(function(t){var om=(ot[t.id]||{}).m||{},m=t.m||{};
+    Object.keys(m).forEach(function(k){var r=m[k],q=om[k];if(!ok(r))return;if(ok(q)&&String(q.a)===String(r.a)&&String(q.b)===String(r.b))return;
+      out.n++;var p=k.split("__");if(p.length===3&&p[0].charAt(0)==="P"){var A=team(t,p[1]),B=team(t,p[2]);if(A&&B)out.lab=A+" "+r.a+"-"+r.b+" "+B}})});
+  var on=o.nat||{},nn=n.nat||{};["res","fin"].forEach(function(f){var a=on[f]||{},b=nn[f]||{};Object.keys(b).forEach(function(k){if(JSON.stringify(a[k])!==JSON.stringify(b[k]))out.n++})});
+  return out;
+}
+function show(info){
+  var n=info?info.n:0,t=n>1?n+" nouveaux scores":n===1?"Nouveau score":"Résultats mis à jour",s=n===1&&info.lab?info.lab:"Touchez pour voir les derniers résultats";
+  try{document.title="("+(n||1)+") "+T0;if(navigator.setAppBadge)navigator.setAppBadge(n||1).catch(function(){})}catch(e){}
+  if(!pill){pill=document.createElement("button");pill.type="button";pill.className="ff-maj";pill.onclick=reload;document.body.appendChild(pill);
+    try{if(navigator.vibrate)navigator.vibrate([60,50,60])}catch(e){}}
+  pill.innerHTML='<i></i><span><b>'+t+'</b><small></small></span><em>Mettre à jour</em>';
+  pill.querySelector("small").textContent=s;
+}
 function check(auto){
   if(busy||document.hidden||(navigator.onLine===false))return;busy=true;
   fetch(location.pathname,{method:"HEAD",cache:"no-store"}).then(function(r){
@@ -22,7 +47,9 @@ function check(auto){
     return fetch(location.pathname,{cache:"no-store"}).then(function(x){return x.text()}).then(function(t){
       busy=false;var i=t.indexOf('id="sn'+'ap">{'),a=i<0?"":snapAt(t.slice(i,i+300)),c=curAt();
       if(!a||!c||a<=c)return;
-      if(auto||LIVE.test(location.hash))location.reload();else show();
+      if(auto||LIVE.test(location.hash)){reload();return}
+      var info=null;try{var j=t.indexOf("<"+"/script>",i),ns=JSON.parse(t.slice(t.indexOf(">",i)+1,j)),os=JSON.parse(document.getElementById("snap").textContent);info=diff(os,ns)}catch(e){}
+      show(info);
     });
   }).catch(function(){busy=false});
 }
@@ -30,16 +57,20 @@ document.addEventListener("visibilitychange",function(){
   if(document.hidden){hidAt=Date.now();return}
   check(hidAt&&Date.now()-hidAt>20000);
 });
-check(false);setInterval(function(){check(false)},90000);
+check(false);setInterval(function(){check(false)},60000);
 })();</script>"""
 APP_CSS=(":root{padding-top:env(safe-area-inset-top,0px)}"
  ".pwa body::before{background:#0B1628!important}"
  ".pwa,.pwa body{overscroll-behavior-y:none}.pwa body{-webkit-tap-highlight-color:transparent}"
- ".ff-maj{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:8px;"
- "font:600 15px/1 Barlow,system-ui,sans-serif;color:#fff;background:#12233F;border:1px solid #2C4268;border-radius:999px;padding:12px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);cursor:pointer;white-space:nowrap}"
- ".ff-maj b{color:#FFEB7A}.ff-maj span{width:9px;height:9px;border-radius:50%;background:#FF5F57;flex:none}"
- "@media (prefers-reduced-motion:no-preference){.ff-maj{animation:ffmaj .5s cubic-bezier(.23,1,.32,1) both}}"
- "@keyframes ffmaj{from{opacity:0;transform:translate(-50%,16px)}}@media print{.ff-maj{display:none}}")
+ ".ff-maj{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:12px;width:min(440px,calc(100vw - 24px));box-sizing:border-box;text-align:left;"
+ "font:500 14px/1.25 Barlow,system-ui,sans-serif;color:#fff;background:#12233F;border:1px solid #2C4268;border-radius:20px;padding:12px 12px 12px 16px;box-shadow:0 14px 40px rgba(0,0,0,.45);cursor:pointer}"
+ ".ff-maj i{width:12px;height:12px;border-radius:50%;background:#FF5F57;flex:none;box-shadow:0 0 0 0 rgba(255,95,87,.6);animation:ffpu 1.6s infinite}"
+ ".ff-maj span{flex:1;min-width:0;display:grid;gap:2px}.ff-maj b{font-weight:700;font-size:16px}"
+ ".ff-maj small{font-size:13px;color:#B9C6DA;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"
+ ".ff-maj em{font-style:normal;font-weight:700;font-size:14px;color:#12233F;background:#FFEB7A;border-radius:12px;padding:10px 12px;white-space:nowrap;flex:none}"
+ "@keyframes ffpu{70%{box-shadow:0 0 0 9px rgba(255,95,87,0)}100%{box-shadow:0 0 0 0 rgba(255,95,87,0)}}"
+ "@media (prefers-reduced-motion:no-preference){.ff-maj{animation:ffmaj .55s cubic-bezier(.34,1.56,.64,1) both}}"
+ "@keyframes ffmaj{from{opacity:0;transform:translate(-50%,40px)}}@media print{.ff-maj{display:none}}")
 def make_head():
     return ('<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
  '<title>Frontenis France</title>'
