@@ -7,6 +7,10 @@
  "gw": "1 Carte INTERSPORT d'une valeur de 40€/joueurs",
  "kosets": true,
  "m": {
+  "P0__mmw87ro1hrlq1__mmw6ediu35d3s": {
+   "a": 20,
+   "b": 12
+  },
   "P0__mmw87ro1hrlq1__mmw9odld1sx7w": {
    "a": 20,
    "b": 12
@@ -226,6 +230,7 @@
  "tie": "after",
  "ts": {
   "P0__mmw87ro1hrlq1__mmw6ediu35d3s": {
+   "e": 1795280215746,
    "s": 1795278818032
   },
   "P0__mmw87ro1hrlq1__mmw9odld1sx7w": {
