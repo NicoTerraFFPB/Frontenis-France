@@ -115,7 +115,7 @@ for b in (load('birth') if os.path.isdir(S+'birth') else []):
             for p in players:
                 if p.get('id')==b['id']: p['age']=age
     except Exception: pass
-snap={"at":now.isoformat(),"players":players,"entries":entries,"tournaments":json.loads(tj),"nat":{"teams":nat.get('teams',{}),"days":nat.get('days',[]),"res":nat.get('res',{}),"fin":nat.get('fin',{})}}
+snap={"at":now.isoformat(),"players":players,"entries":entries,"tournaments":json.loads(tj),"nat":{"teams":nat.get('teams',{}),"days":nat.get('days',[]),"res":nat.get('res',{}),"fin":nat.get('fin',{}),"ts":nat.get('ts',{}),"vd":nat.get('vd',{})}}
 cfg={}
 for c in load('intlcfg'): cfg[c['id']]=bool(c.get('public'))
 snap["intlCfg"]={"seniors":bool(cfg.get('seniors'))}
