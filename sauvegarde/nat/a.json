@@ -37,8 +37,16 @@
    "date": "sam. 19 juin 2027",
    "id": "dmw6szoq2y9b",
    "ms": [],
-   "note": "Phases finales",
+   "note": "Phase de championnat",
    "place": "Lieu à définir",
+   "pool": false
+  },
+  {
+   "date": "",
+   "id": "dmwttbpfmkxv",
+   "ms": [],
+   "note": "",
+   "place": "",
    "pool": false
   }
  ],
