@@ -9,7 +9,7 @@ STARTUP='<link rel="apple-touch-startup-image" media="(device-width: 440px) and 
 APP_JS=r"""<script>(function(){
 var d=document.documentElement,sa=false;try{sa=navigator.standalone===true||matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: fullscreen)").matches}catch(e){}
 if(sa)d.classList.add("pwa");
-var tag=null,busy=false,hidAt=0,pill=null,LIVE=/^#(jour-j|nat-a)/,T0=document.title;
+var tag=null,busy=false,hidAt=0,pill=null,LIVE=/^#(jour-j|nat-a|essai)/,T0=document.title;
 try{if(navigator.clearAppBadge)navigator.clearAppBadge().catch(function(){})}catch(e){}
 /* retour à la même place après une mise à jour */
 try{var sv=JSON.parse(sessionStorage.getItem("ff-maj")||"null");sessionStorage.removeItem("ff-maj");
@@ -47,7 +47,10 @@ function check(auto){
     return fetch(location.pathname,{cache:"no-store"}).then(function(x){return x.text()}).then(function(t){
       busy=false;var i=t.indexOf('id="sn'+'ap">{'),a=i<0?"":snapAt(t.slice(i,i+300)),c=curAt();
       if(!a||!c||a<=c)return;
-      if(auto||LIVE.test(location.hash)){reload();return}
+      if(auto||LIVE.test(location.hash)){
+        /* page Live : on applique les nouvelles données sans recharger (le direct YouTube continue) */
+        if(window.ffApplySnap){try{var j0=t.indexOf("<"+"/script>",i),ns0=JSON.parse(t.slice(t.indexOf(">",i)+1,j0));if(window.ffApplySnap(ns0)){tag=k;return}}catch(e){}}
+        reload();return}
       var info=null;try{var j=t.indexOf("<"+"/script>",i),ns=JSON.parse(t.slice(t.indexOf(">",i)+1,j)),os=JSON.parse(document.getElementById("snap").textContent);info=diff(os,ns)}catch(e){}
       show(info);
     });
@@ -116,6 +119,10 @@ for b in (load('birth') if os.path.isdir(S+'birth') else []):
                 if p.get('id')==b['id']: p['age']=age
     except Exception: pass
 snap={"at":now.isoformat(),"players":players,"entries":entries,"tournaments":json.loads(tj),"nat":{"teams":nat.get('teams',{}),"days":nat.get('days',[]),"res":nat.get('res',{}),"fin":nat.get('fin',{}),"ts":nat.get('ts',{}),"vd":nat.get('vd',{})}}
+# National A fictif du « Test du direct » (menu Admin) : publié à part, pour essayer la page Live du site (#essai-live)
+if os.path.isfile(S+'nat/test.json'):
+    nt=json.load(open(S+'nat/test.json',encoding='utf-8')); nt=nt.get('data',nt)
+    snap["natTest"]={k:nt.get(k,[] if k=='days' else {}) for k in ['teams','days','res','fin','ts','vd']}
 cfg={}
 for c in load('intlcfg'): cfg[c['id']]=bool(c.get('public'))
 snap["intlCfg"]={"seniors":bool(cfg.get('seniors'))}
