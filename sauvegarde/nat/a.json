@@ -39,14 +39,14 @@
    "ms": [],
    "note": "Phase de championnat",
    "place": "Lieu à définir",
-   "pool": false
+   "pool": true
   },
   {
-   "date": "",
+   "date": "dim. 20 juin 2027",
    "id": "dmwttbpfmkxv",
    "ms": [],
-   "note": "",
-   "place": "",
+   "note": "Phase finale - 1/4 et 1/2",
+   "place": "Lieu à définir",
    "pool": false
   }
  ],
