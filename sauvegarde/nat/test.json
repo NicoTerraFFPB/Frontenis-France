@@ -54,5 +54,10 @@
   }
  },
  "ts": {},
- "vd": {}
+ "vd": {
+  "d0": {
+   "s": "17:42:52",
+   "u": "rtmp://b.rtmp.youtube.com/live2?backup=1"
+  }
+ }
 }
