@@ -1,0 +1,58 @@
+{
+ "days": [
+  {
+   "date": "ven. 27 novembre 2026",
+   "id": "dtest",
+   "ms": [
+    {
+     "a": "e1",
+     "b": "e2",
+     "h": "15:54",
+     "id": "mt1"
+    },
+    {
+     "a": "e3",
+     "b": "e4",
+     "h": "16:34",
+     "id": "mt2"
+    }
+   ],
+   "note": "Test du direct",
+   "place": "Test",
+   "pool": true
+  }
+ ],
+ "fin": {},
+ "ls": {},
+ "res": {},
+ "tcol": {
+  "e1": "#C8102E",
+  "e2": "#0055A4",
+  "e3": "#2E7D4F",
+  "e4": "#F2C200"
+ },
+ "teams": {
+  "e1": {
+   "name": "Équipe Rouge",
+   "p1": "Joueur 1",
+   "p2": "Joueur 2"
+  },
+  "e2": {
+   "name": "Équipe Bleue",
+   "p1": "Joueur 3",
+   "p2": "Joueur 4"
+  },
+  "e3": {
+   "name": "Équipe Verte",
+   "p1": "Joueur 5",
+   "p2": "Joueur 6"
+  },
+  "e4": {
+   "name": "Équipe Jaune",
+   "p1": "Joueur 7",
+   "p2": "Joueur 8"
+  }
+ },
+ "ts": {},
+ "vd": {}
+}
